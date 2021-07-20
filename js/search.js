@@ -105,7 +105,7 @@ $(document).ready(function(){
     $("#local-search-input").bind('keypress',function(event){
         if(event.keyCode=='13'){
             //$(this).val('');
-            alert('search');
+            //alert('search');
         }
     })
 });
