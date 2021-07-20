@@ -256,6 +256,10 @@
 
     
 
+    
+
+    
+
 
 
 <!-- Main Content -->
@@ -264,28 +268,110 @@
 
         <div class="post-preview">
 
-            <a href="/2019/11/01/Hexo-Theme-Snail/">
+            <a href="/2021/07/20/基于docker配置mysql主从复制/">
                 <h2 class="post-title">
-                    Hexo-Theme-Snail
+                    基于docker配置mysql主从复制
                 </h2>
                 <h3 class="post-subtitle">
-                    A succinct hexo theme.
+                    基于docker，实现mysql主从复制配置
                 </h3>
                 <div class="post-content-preview">
-                    hexo-theme-snailView Hexo-Theme-Snail Sources On Github &#10174; 
-View Live Super Snail Blog &#10174;
-
-Hexo-theme-snail is a succinct hexo theme. It has two colors, light and star, that can be set ......
+                    创建容器
+主节点容器创建1docker run --name mastermysql  -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /usr/local/docker/mysql/master/data:/var/lib/mysql -v /usr/local/docker/mysql/master/conf/my.cnf:/etc/my......
                 </div>
             </a>
             
                 <p class="post-meta" style="margin: 10px 0;">
                     Posted by guanyang on
-                    2019-11-01
+                    2021-07-20
                 </p>
                 <div class="tags">
                     
-                      <a href="/tags/#hexo-theme-snail" title="hexo-theme-snail">hexo-theme-snail</a>
+                      <a href="/tags/#mysql" title="mysql">mysql</a>
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2021/07/20/Caffeine缓存/">
+                <h2 class="post-title">
+                    Caffeine缓存
+                </h2>
+                <h3 class="post-subtitle">
+                    介绍Caffeine缓存机制，以及与GuavaCache的差异
+                </h3>
+                <div class="post-content-preview">
+                    特性Caffeine提供了灵活的构造方法，从而创建可以满足如下特性的本地缓存：
+
+自动把数据加载到本地缓存中，并且可以配置异步；
+基于数量剔除策略；
+基于失效时间剔除策略，这个时间是从最后一次访问或者写入算起；
+异步刷新；
+Key会被包装成Weak引用；
+Value会被包装成Weak或者Soft引用，从而能被GC掉，而不至于内存泄漏；
+数据剔除提醒；
+写入广播机制；
+缓存访问可以统计；
+
+过......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2021-07-20
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#Caffeine" title="Caffeine">Caffeine</a>
+                    
+                      <a href="/tags/#缓存" title="缓存">缓存</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2021/07/20/easy-mock服务器部署/">
+                <h2 class="post-title">
+                    easy-mock服务器部署
+                </h2>
+                <h3 class="post-subtitle">
+                    基于linux，实现easy-mock服务器部署
+                </h3>
+                <div class="post-content-preview">
+                    参考文档
+github源码：https://github.com/easy-mock/easy-mock
+mock语法：http://mockjs.com/examples.html
+
+安装说明安装node1234567891011121314151617// 下载nodecd /usr/local/srcwget https://nodejs.org/dist/v8.9.0/node-v8......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2021-07-20
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#easy-mock" title="easy-mock">easy-mock</a>
                     
                 </div>
             
@@ -346,6 +432,14 @@ Hexo-theme-snail is a succinct hexo theme. It has two colors, light and star, th
     <!-- no hr -->
     <h5><a href="/tags/">FEATURED TAGS</a></h5>
     <div class="tags">
+        
+            
+        
+            
+        
+            
+        
+            
         
             
         
@@ -436,7 +530,15 @@ Hexo-theme-snail is a succinct hexo theme. It has two colors, light and star, th
     <ul>
       
         <li>
-          <a href="/2019/11/01/Hexo-Theme-Snail/">Hexo-Theme-Snail</a>
+          <a href="/2021/07/20/%E5%9F%BA%E4%BA%8Edocker%E9%85%8D%E7%BD%AEmysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/">基于docker配置mysql主从复制</a>
+        </li>
+      
+        <li>
+          <a href="/2021/07/20/Caffeine%E7%BC%93%E5%AD%98/">Caffeine缓存</a>
+        </li>
+      
+        <li>
+          <a href="/2021/07/20/easy-mock%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/">easy-mock服务器部署</a>
         </li>
       
     </ul>
@@ -463,7 +565,7 @@ Hexo-theme-snail is a succinct hexo theme. It has two colors, light and star, th
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li></ul>
     </div>
 
         <hr>
@@ -474,7 +576,11 @@ Hexo-theme-snail is a succinct hexo theme. It has two colors, light and star, th
     <div class="widget">
       <ul>
         
-          <a href="categories/#hexo"><li>hexo</li></a>
+          <a href="categories/#Linux"><li>Linux</li></a>
+        
+          <a href="categories/#Java"><li>Java</li></a>
+        
+          <a href="categories/#SQL"><li>SQL</li></a>
         
       </ul>
     </div>
