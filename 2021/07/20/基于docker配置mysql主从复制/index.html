@@ -123,7 +123,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">288</span> and
+                                Words <span class="post-count">291</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -184,6 +184,9 @@
                     
 
                         
+                    
+
+                        
                         <li>
                             <a href="/about/">About</a>
                         </li>
@@ -199,6 +202,13 @@
 
                         
                         <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/photography/">Photography</a>
                         </li>
                         
@@ -208,16 +218,6 @@
                         <li>
                             <a href="/categories/">Categories</a>
                         </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
                         
                     
                     
@@ -276,24 +276,37 @@
                 post-container">
 
                 <h3 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h3><ul>
-<li>主节点容器创建<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mastermysql  -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /usr/<span class="built_in">local</span>/docker/mysql/master/data:/var/lib/mysql -v /usr/<span class="built_in">local</span>/docker/mysql/master/conf/my.cnf:/etc/mysql/my.cnf  mysql:5.7.19</span><br></pre></td></tr></table></figure></li>
-<li>主节点配置my.cnf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line">server-id=1</span><br><span class="line">binlog-ignore-db=information_schema</span><br><span class="line">binlog-ignore-db=cluster</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">binlog-do-db=demo</span><br></pre></td></tr></table></figure></li>
-<li>从节点容器创建<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name slavemysql  -d -p 3308:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /usr/<span class="built_in">local</span>/docker/mysql/slave/data:/var/lib/mysql -v /usr/<span class="built_in">local</span>/docker/mysql/slave/conf/my.cnf:/etc/mysql/my.cnf  mysql:5.7.19</span><br></pre></td></tr></table></figure></li>
-<li>从节点配置my.cnf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line">server-id=2</span><br><span class="line">binlog-ignore-db=information_schema</span><br><span class="line">binlog-ignore-db=cluster</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">replicate-do-db=demo</span><br><span class="line">replicate-ignore-db=mysql</span><br><span class="line"><span class="built_in">log</span>-slave-updates</span><br><span class="line">slave-skip-errors=all</span><br><span class="line">slave-net-timeout=60</span><br></pre></td></tr></table></figure>
-</li>
+<li>主节点容器创建</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mastermysql  -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /usr/<span class="built_in">local</span>/docker/mysql/master/data:/var/lib/mysql -v /usr/<span class="built_in">local</span>/docker/mysql/master/conf/my.cnf:/etc/mysql/my.cnf  mysql:5.7.19</span><br></pre></td></tr></table></figure>
+<ul>
+<li>主节点配置my.cnf</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line">server-id=1</span><br><span class="line">binlog-ignore-db=information_schema</span><br><span class="line">binlog-ignore-db=cluster</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">binlog-do-db=demo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从节点容器创建</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name slavemysql  -d -p 3308:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /usr/<span class="built_in">local</span>/docker/mysql/slave/data:/var/lib/mysql -v /usr/<span class="built_in">local</span>/docker/mysql/slave/conf/my.cnf:/etc/mysql/my.cnf  mysql:5.7.19</span><br></pre></td></tr></table></figure>
+<ul>
+<li>从节点配置my.cnf</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line">server-id=2</span><br><span class="line">binlog-ignore-db=information_schema</span><br><span class="line">binlog-ignore-db=cluster</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">replicate-do-db=demo</span><br><span class="line">replicate-ignore-db=mysql</span><br><span class="line"><span class="built_in">log</span>-slave-updates</span><br><span class="line">slave-skip-errors=all</span><br><span class="line">slave-net-timeout=60</span><br></pre></td></tr></table></figure>
 <h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><ul>
 <li>主：docker exec -it mastermysql bash</li>
 <li>从：docker exec -it slavemysql bash</li>
 </ul>
 <h3 id="授权复制权限"><a href="#授权复制权限" class="headerlink" title="授权复制权限"></a>授权复制权限</h3><ul>
-<li>创建用户<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user <span class="string">'slave'</span>@<span class="string">'%'</span> identified by <span class="string">'123456'</span>;</span><br></pre></td></tr></table></figure></li>
-<li>授权<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO <span class="string">'slave'</span>@<span class="string">'%'</span>;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-</li>
+<li>创建用户</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user <span class="string">'slave'</span>@<span class="string">'%'</span> identified by <span class="string">'123456'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>授权</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO <span class="string">'slave'</span>@<span class="string">'%'</span>;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
 <h3 id="查询节点状态"><a href="#查询节点状态" class="headerlink" title="查询节点状态"></a>查询节点状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 主：</span></span><br><span class="line">show master status;</span><br><span class="line"><span class="comment"># 从：</span></span><br><span class="line">show slave status;</span><br></pre></td></tr></table></figure>
 <h3 id="从节点配置主从连接"><a href="#从节点配置主从连接" class="headerlink" title="从节点配置主从连接"></a>从节点配置主从连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">stop slave;</span><br><span class="line"></span><br><span class="line">change master to master_host=<span class="string">'172.17.0.3'</span>,master_user=<span class="string">'slave'</span>,master_password=<span class="string">'123456'</span>,master_log_file=<span class="string">'mysql-bin.000007'</span>,master_log_pos=871,master_port=3306;</span><br><span class="line"></span><br><span class="line">start slave;</span><br></pre></td></tr></table></figure>
-<p>注：查询主容器ip<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect --format=<span class="string">'&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;'</span> 容器名称|容器id</span><br></pre></td></tr></table></figure></p>
+<p>注：查询主容器ip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect --format=<span class="string">'&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;'</span> 容器名称|容器id</span><br></pre></td></tr></table></figure>
 <h3 id="创建只读用户"><a href="#创建只读用户" class="headerlink" title="创建只读用户"></a>创建只读用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create user <span class="string">'reader'</span>@<span class="string">'%'</span> identified by <span class="string">'123456'</span>;</span><br><span class="line"></span><br><span class="line">GRANT Select ON *.* TO <span class="string">'reader'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
                 
                 <hr>
