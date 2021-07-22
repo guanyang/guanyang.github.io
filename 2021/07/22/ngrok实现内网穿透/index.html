@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          Caffeine缓存 - 三叶草的星空
+          ngrok实现内网穿透 - 三叶草的星空
         
     </title>
 
-    <link rel="canonical" href="https://note.xcloudapi.com/2021/07/20/Caffeine缓存/">
+    <link rel="canonical" href="https://note.xcloudapi.com/2021/07/22/ngrok实现内网穿透/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,23 +108,21 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Caffeine" title="Caffeine">Caffeine</a>
-                            
-                              <a class="tag" href="/tags/#缓存" title="缓存">缓存</a>
+                              <a class="tag" href="/tags/#ngrok" title="ngrok">ngrok</a>
                             
                         </div>
-                        <h1>Caffeine缓存</h1>
-                        <h2 class="subheading">介绍Caffeine缓存机制，以及与GuavaCache的差异</h2>
+                        <h1>ngrok实现内网穿透</h1>
+                        <h2 class="subheading">自己搭建ngrok实现内网穿透</h2>
                         <span class="meta">
                             Posted by guanyang on
-                            2021-07-20
+                            2021-07-22
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">699</span> and
-                                Reading Time <span class="post-count">2</span> Minutes
+                                Words <span class="post-count">683</span> and
+                                Reading Time <span class="post-count">3</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -272,66 +270,58 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>Caffeine提供了灵活的构造方法，从而创建可以满足如下特性的本地缓存：</p>
-<ol>
-<li>自动把数据加载到本地缓存中，并且可以配置异步；</li>
-<li>基于数量剔除策略；</li>
-<li>基于失效时间剔除策略，这个时间是从最后一次访问或者写入算起；</li>
-<li>异步刷新；</li>
-<li>Key会被包装成Weak引用；</li>
-<li>Value会被包装成Weak或者Soft引用，从而能被GC掉，而不至于内存泄漏；</li>
-<li>数据剔除提醒；</li>
-<li>写入广播机制；</li>
-<li>缓存访问可以统计；</li>
-</ol>
-<h3 id="过期机制"><a href="#过期机制" class="headerlink" title="过期机制"></a>过期机制</h3><p>Caffeine的过期机制都是在构造Cache的时候申明，主要有如下几种：</p>
-<ol>
-<li>expireAfterWrite：表示自从最后一次写入后多久就会过期；</li>
-<li>expireAfterAccess：表示自从最后一次访问（写入或者读取）后多久就会过期；</li>
-<li>expireAfter：自定义过期策略；</li>
-</ol>
-<h3 id="刷新机制"><a href="#刷新机制" class="headerlink" title="刷新机制"></a>刷新机制</h3><p>在构造Cache时通过refreshAfterWrite方法指定刷新周期，例如refreshAfterWrite(10, TimeUnit.SECONDS)表示10秒钟刷新一次</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.build(<span class="keyword">new</span> CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">load</span><span class="params">(String k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 这里我们就可以从数据库或者其他地方查询最新的数据</span></span><br><span class="line">        <span class="keyword">return</span> getValue(k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+                <h3 id="域名配置"><a href="#域名配置" class="headerlink" title="域名配置"></a>域名配置</h3><p>申请一个自己的域名，假设用到的域名是<code>ngrok.xxx.com</code>，需要将<code>ngrok.xxx.com</code>和<code>*.ngrok.xxx.com</code>解析到自己的服务器上面</p>
+<h3 id="配置go语言环境"><a href="#配置go语言环境" class="headerlink" title="配置go语言环境"></a>配置go语言环境</h3><p>ngrok是go语音写的，服务器上需要配置go语言环境，相关配置命令如下：</p>
 <ul>
-<li>Caffeine的刷新机制是「被动」的</li>
-<li>它的实现原理是在get方法中，调用afterRead的时候，调用refreshIfNeeded方法判断是否需要刷新数据</li>
-</ul>
-<h3 id="剔除机制"><a href="#剔除机制" class="headerlink" title="剔除机制"></a>剔除机制</h3><p>在构造Cache时可以通过removalListener方法申明剔除监听器，从而可以跟踪本地缓存中被剔除的数据历史信息。根据RemovalCause.java枚举值可知，剔除策略有如下5种：</p>
-<ul>
-<li><p>「EXPLICIT」：调用方法（例如：cache.invalidate(key)、cache.invalidateAll）显示剔除数据；</p>
+<li><p>下载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载</span></span><br><span class="line">wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz</span><br><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar -zxvf go1.9.1.linux-amd64.tar.gz</span><br><span class="line"><span class="comment">#移动到local目录</span></span><br><span class="line">mv go /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>「REPLACED」：不是真正被剔除，而是用户调用一些方法（例如：put()，putAll()等）盖了之前的值；</p>
-</li>
-<li><p>「COLLECTED」：表示缓存中的Key或者Value被垃圾回收掉了；</p>
-</li>
-<li><p>「EXPIRED」: expireAfterWrite/expireAfterAccess约定时间内没有任何访问导致被剔除；</p>
-</li>
-<li><p>「SIZE」：超过maximumSize限制的元素个数被剔除的原因；</p>
+<li><p>创建软连接</p>
 </li>
 </ul>
-<h3 id="GuavaCache和Caffeine差异"><a href="#GuavaCache和Caffeine差异" class="headerlink" title="GuavaCache和Caffeine差异"></a>GuavaCache和Caffeine差异</h3><ol>
-<li><p>剔除算法方面，GuavaCache采用的是「LRU」算法，而Caffeine采用的是「Window TinyLFU」算法，这是两者之间最大，也是根本的区别。</p>
-</li>
-<li><p>立即失效方面，Guava会把立即失效 (例如：expireAfterAccess(0) and expireAfterWrite(0)) 转成设置最大Size为0。这就会导致剔除提醒的原因是SIZE而不是EXPIRED。Caffiene能正确识别这种剔除原因。</p>
-</li>
-<li><p>取代提醒方面，Guava只要数据被替换，不管什么原因，都会触发剔除监听器。而Caffiene在取代值和先前值的引用完全一样时不会触发监听器。</p>
-</li>
-<li><p>异步化方方面，Caffiene的很多工作都是交给线程池去做的（默认：ForkJoinPool.commonPool()），例如：剔除监听器，刷新机制，维护工作等。</p>
-</li>
-</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建软连接</span></span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/go/bin/* /usr/bin/</span><br><span class="line"></span><br><span class="line"><span class="comment">#测试是否配置成功</span></span><br><span class="line">go env</span><br></pre></td></tr></table></figure>
+<h3 id="安装ngrok"><a href="#安装ngrok" class="headerlink" title="安装ngrok"></a>安装ngrok</h3><ul>
+<li>下载源码</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/inconshreveable/ngrok.git</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成证书</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入ngrok源码的目录</span></span><br><span class="line"><span class="built_in">cd</span> ngrok</span><br><span class="line"><span class="comment"># 设置域名，这里使用  ngrok.xxx.com</span></span><br><span class="line"><span class="built_in">export</span> NGROK_DOMAIN=<span class="string">"ngrok.xxx.com"</span></span><br><span class="line"><span class="comment"># 然后依次执行以下命令即可</span></span><br><span class="line">openssl genrsa -out rootCA.key 2048</span><br><span class="line">openssl req -x509 -new -nodes -key rootCA.key -subj <span class="string">"/CN=<span class="variable">$NGROK_DOMAIN</span>"</span> -days 5000 -out rootCA.pem</span><br><span class="line">openssl genrsa -out device.key 2048</span><br><span class="line">openssl req -new -key device.key -subj <span class="string">"/CN=<span class="variable">$NGROK_DOMAIN</span>"</span> -out device.csr</span><br><span class="line">openssl x509 -req -<span class="keyword">in</span> device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 5000</span><br><span class="line"><span class="comment"># 替换原来证书</span></span><br><span class="line">cp rootCA.pem ../assets/client/tls/ngrokroot.crt</span><br><span class="line">cp device.crt ../assets/server/tls/snakeoil.crt</span><br><span class="line">cp device.key ../assets/server/tls/snakeoil.key</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编译服务端</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/ngrok</span><br><span class="line">GOOS=<span class="variable">$GOOS</span> GOARCH=<span class="variable">$GOARCH</span> make release-server</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编译各大平台客户端</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、Linux 32位：linux 386</span></span><br><span class="line"><span class="comment"># 2、Linux 64位：linux amd64</span></span><br><span class="line"><span class="comment"># 3、Windows 32位：windows 386</span></span><br><span class="line"><span class="comment"># 4、Windows 64位：windows amd64</span></span><br><span class="line"><span class="comment"># 5、Mac OS 32位：darwin 386</span></span><br><span class="line"><span class="comment"># 6、Mac OS 64位：darwin amd64</span></span><br><span class="line"><span class="comment"># 7、Linux ARM：linux arm</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对应以上各平台，将$1、$2替换成对应的值</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/ngrok/</span><br><span class="line"><span class="comment"># GOOS=$1 GOARCH=$2 make release-client</span></span><br><span class="line"><span class="comment"># 如编译Mac OS 64位客户端</span></span><br><span class="line">GOOS=darwin GOARCH=amd64 make release-client</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成的客户端文件示例</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.../ngrok/bin<span class="variable">$tree</span></span><br><span class="line">.</span><br><span class="line">|-- darwin_amd64</span><br><span class="line">|   `-- ngrok</span><br><span class="line">|-- go-bindata</span><br><span class="line">|-- linux_386</span><br><span class="line">|   |-- ngrok</span><br><span class="line">|   `-- ngrokd</span><br><span class="line">|-- linux_arm</span><br><span class="line">|   `-- ngrok</span><br><span class="line">`-- windows_amd64</span><br><span class="line">    `-- ngrok.exe</span><br></pre></td></tr></table></figure>
+<h3 id="启动服务端"><a href="#启动服务端" class="headerlink" title="启动服务端"></a>启动服务端</h3><p>开启后台运行，注意端口<code>8001</code>，<code>8443</code>和<code>4443</code>开启防火墙或安全规则放行，端口也可自行定义<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup /usr/<span class="built_in">local</span>/ngrok/bin/ngrokd -domain=<span class="string">"ngrok.xxx.com"</span> -tlsCrt=<span class="string">"/usr/local/ngrok/server.crt"</span> -tlsKey=<span class="string">"/usr/local/ngrok/server.key"</span> -httpAddr=<span class="string">":8001"</span> -httpsAddr=<span class="string">":8443"</span> -tunnelAddr=<span class="string">":4443"</span> -<span class="built_in">log</span>-level=<span class="string">"INFO"</span> &gt;/var/<span class="built_in">log</span>/ngrok.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure></p>
+<h3 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>将上面生成的客户端可执行文件拷贝到需要内网穿透的设备上即可，这里直接说多域名和多TCP内网穿透配置文件，直接在客户端同级目录下创建ngrok.cfg配置文件，注意server_addr端口要与tunnelAddr对应，内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">server_addr: ngrok.xxx.com:4443</span><br><span class="line">trust_host_root_certs: <span class="literal">false</span></span><br><span class="line">tunnels:</span><br><span class="line"> weixin:</span><br><span class="line">  subdomain: weixin</span><br><span class="line">  proto:</span><br><span class="line">   http: 8002</span><br><span class="line"> about:</span><br><span class="line">  subdomain: about</span><br><span class="line">  proto:</span><br><span class="line">   http: 192.168.0.1:80</span><br><span class="line"> ssh:</span><br><span class="line">  remote_port: 2020</span><br><span class="line">  proto:</span><br><span class="line">   tcp: 22</span><br></pre></td></tr></table></figure>
+<h3 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h3><ul>
+<li>启动特定转发</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ngrok -config ngrok.cfg -<span class="built_in">log</span> ngrok.log start weixin</span><br></pre></td></tr></table></figure>
+<p>注：<code>-log ngrok.log</code>可以查看客户端日志，可去掉</p>
+<ul>
+<li>将所有配置转发</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ngrok -config ngrok.cfg -<span class="built_in">log</span> ngrok.log start-all</span><br></pre></td></tr></table></figure>
+<p>启动后出现<code>online</code>字样说明内网穿透成功</p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2021/07/20/基于docker配置mysql主从复制/" data-toggle="tooltip" data-placement="top" title="基于docker配置mysql主从复制">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2021/07/20/easy-mock服务器部署/" data-toggle="tooltip" data-placement="top" title="easy-mock服务器部署">Next Post &rarr;</a>
+                        <a href="/2021/07/20/基于docker配置mysql主从复制/" data-toggle="tooltip" data-placement="top" title="基于docker配置mysql主从复制">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -444,7 +434,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#特性"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">特性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#过期机制"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">过期机制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#刷新机制"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">刷新机制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#剔除机制"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">剔除机制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#GuavaCache和Caffeine差异"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">GuavaCache和Caffeine差异</span></a></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#域名配置"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">域名配置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#配置go语言环境"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">配置go语言环境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安装ngrok"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">安装ngrok</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#启动服务端"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">启动服务端</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#客户端配置"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">客户端配置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#内网穿透"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">内网穿透</span></a></li></ol>
             
           
           </div>
@@ -466,9 +456,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Caffeine" title="Caffeine">Caffeine</a>
-                        
-                          <a class="tag" href="/tags/#缓存" title="缓存">缓存</a>
+                          <a class="tag" href="/tags/#ngrok" title="ngrok">ngrok</a>
                         
                     </div>
                 </section>
