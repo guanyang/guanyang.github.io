@@ -29,6 +29,31 @@
     
     
     <entry>
+      <title>Mac环境RocketMQ安装</title>
+      <link href="/2021/07/21/Mac%E7%8E%AF%E5%A2%83RocketMQ%E5%AE%89%E8%A3%85/"/>
+      <url>/2021/07/21/Mac%E7%8E%AF%E5%A2%83RocketMQ%E5%AE%89%E8%A3%85/</url>
+      
+        <content type="html"><![CDATA[<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>官网地址：<a href="http://rocketmq.apache.org/docs/quick-start/" target="_blank" rel="noopener">http://rocketmq.apache.org/docs/quick-start/</a></p><h3 id="运维管理"><a href="#运维管理" class="headerlink" title="运维管理"></a>运维管理</h3><p><a href="https://github.com/apache/rocketmq/blob/master/docs/cn/operation.md" target="_blank" rel="noopener">https://github.com/apache/rocketmq/blob/master/docs/cn/operation.md</a></p><h3 id="rocketMq-安装"><a href="#rocketMq-安装" class="headerlink" title="rocketMq 安装"></a>rocketMq 安装</h3><h4 id="解压与编译"><a href="#解压与编译" class="headerlink" title="解压与编译"></a>解压与编译</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unzip rocketmq-all-4.9.0-source-release.zip</span><br><span class="line"><span class="built_in">cd</span> rocketmq-all-4.9.0/</span><br><span class="line">mvn -Prelease-all -DskipTests clean install -U</span><br><span class="line"><span class="built_in">cd</span> distribution/target/rocketmq-4.9.0/rocketmq-4.9.0</span><br></pre></td></tr></table></figure><h4 id="启动Name-Server服务"><a href="#启动Name-Server服务" class="headerlink" title="启动Name Server服务"></a>启动Name Server服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.启动NameServer</span></span><br><span class="line">nohup sh bin/mqnamesrv &amp;</span><br><span class="line"><span class="comment"># 2.查看启动日志</span></span><br><span class="line">tail -f ~/logs/rocketmqlogs/namesrv.log</span><br></pre></td></tr></table></figure><h4 id="修改内存大小"><a href="#修改内存大小" class="headerlink" title="修改内存大小"></a>修改内存大小</h4><p>RocketMq默认内存较大，启动Borker如果因为内存不足启动失败，需要修改如下配置文件，修改JVM内存大小</p><ul><li>runborker.sh</li><li>runserver.sh</li></ul><p>改为： JAVA_OPT=”${JAVA_OPT} -server -Xms256m -Xmx256m -Xmn128m”</p><h4 id="启动borker"><a href="#启动borker" class="headerlink" title="启动borker"></a>启动borker</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.启动Broker</span></span><br><span class="line">nohup sh bin/mqbroker -n 127.0.0.1:9876 &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义配置文件</span></span><br><span class="line"><span class="comment"># nohup sh bin/mqbroker -n 192.168.0.5:9876 -c conf/broker.conf autoCreateTopicEnable=true &amp;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.查看启动日志</span></span><br><span class="line">tail -f ~/logs/rocketmqlogs/broker.log</span><br></pre></td></tr></table></figure><h4 id="关闭rocketMq"><a href="#关闭rocketMq" class="headerlink" title="关闭rocketMq"></a>关闭rocketMq</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭NameServer</span></span><br><span class="line">sh bin/mqshutdown namesrv</span><br><span class="line"><span class="comment"># 关闭Borker</span></span><br><span class="line">sh bin/mqshutdown broker</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> MQ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RocketMQ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于docker配置mysql主从复制</title>
       <link href="/2021/07/20/%E5%9F%BA%E4%BA%8Edocker%E9%85%8D%E7%BD%AEmysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/"/>
       <url>/2021/07/20/%E5%9F%BA%E4%BA%8Edocker%E9%85%8D%E7%BD%AEmysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</url>

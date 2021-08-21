@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          easy-mock服务器部署 - 三叶草的星空
+          Mac环境RocketMQ安装 - 三叶草的星空
         
     </title>
 
-    <link rel="canonical" href="https://note.xcloudapi.com/2021/07/20/easy-mock服务器部署/">
+    <link rel="canonical" href="https://note.xcloudapi.com/2021/07/21/Mac环境RocketMQ安装/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,21 +108,21 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#easy-mock" title="easy-mock">easy-mock</a>
+                              <a class="tag" href="/tags/#RocketMQ" title="RocketMQ">RocketMQ</a>
                             
                         </div>
-                        <h1>easy-mock服务器部署</h1>
-                        <h2 class="subheading">基于linux，实现easy-mock服务器部署</h2>
+                        <h1>Mac环境RocketMQ安装</h1>
+                        <h2 class="subheading">Mac环境自己搭建RocketMQ服务，实现本地调试验证MQ相关功能</h2>
                         <span class="meta">
                             Posted by guanyang on
-                            2021-07-20
+                            2021-07-21
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">539</span> and
-                                Reading Time <span class="post-count">2</span> Minutes
+                                Words <span class="post-count">220</span> and
+                                Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -270,28 +270,18 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
-<li>github源码：<a href="https://github.com/easy-mock/easy-mock" target="_blank" rel="noopener">https://github.com/easy-mock/easy-mock</a></li>
-<li>mock语法：<a href="http://mockjs.com/examples.html" target="_blank" rel="noopener">http://mockjs.com/examples.html</a></li>
+                <h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>官网地址：<a href="http://rocketmq.apache.org/docs/quick-start/" target="_blank" rel="noopener">http://rocketmq.apache.org/docs/quick-start/</a></p>
+<h3 id="运维管理"><a href="#运维管理" class="headerlink" title="运维管理"></a>运维管理</h3><p><a href="https://github.com/apache/rocketmq/blob/master/docs/cn/operation.md" target="_blank" rel="noopener">https://github.com/apache/rocketmq/blob/master/docs/cn/operation.md</a></p>
+<h3 id="rocketMq-安装"><a href="#rocketMq-安装" class="headerlink" title="rocketMq 安装"></a>rocketMq 安装</h3><h4 id="解压与编译"><a href="#解压与编译" class="headerlink" title="解压与编译"></a>解压与编译</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unzip rocketmq-all-4.9.0-source-release.zip</span><br><span class="line"><span class="built_in">cd</span> rocketmq-all-4.9.0/</span><br><span class="line">mvn -Prelease-all -DskipTests clean install -U</span><br><span class="line"><span class="built_in">cd</span> distribution/target/rocketmq-4.9.0/rocketmq-4.9.0</span><br></pre></td></tr></table></figure>
+<h4 id="启动Name-Server服务"><a href="#启动Name-Server服务" class="headerlink" title="启动Name Server服务"></a>启动Name Server服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.启动NameServer</span></span><br><span class="line">nohup sh bin/mqnamesrv &amp;</span><br><span class="line"><span class="comment"># 2.查看启动日志</span></span><br><span class="line">tail -f ~/logs/rocketmqlogs/namesrv.log</span><br></pre></td></tr></table></figure>
+<h4 id="修改内存大小"><a href="#修改内存大小" class="headerlink" title="修改内存大小"></a>修改内存大小</h4><p>RocketMq默认内存较大，启动Borker如果因为内存不足启动失败，需要修改如下配置文件，修改JVM内存大小</p>
+<ul>
+<li>runborker.sh</li>
+<li>runserver.sh</li>
 </ul>
-<h3 id="安装说明"><a href="#安装说明" class="headerlink" title="安装说明"></a>安装说明</h3><h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 下载node</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">wget https://nodejs.org/dist/v8.9.0/node-v8.9.0-linux-x64.tar.xz</span><br><span class="line"><span class="comment">## 解压</span></span><br><span class="line">tar xf node-v8.9.0-linux-x64.tar.xz</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line"><span class="comment">## 重命名</span></span><br><span class="line">mv src/node-v8.9.0-linux-x64 node</span><br><span class="line"> </span><br><span class="line"><span class="comment">## 将node添加至path</span></span><br><span class="line">vi ~/.bashrc</span><br><span class="line"><span class="built_in">export</span> NODE_HOME=/usr/<span class="built_in">local</span>/node</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NODE_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"> </span><br><span class="line"><span class="comment">## 安装成功</span></span><br><span class="line">node -v  // 安装成功会显示Node版本</span><br></pre></td></tr></table></figure>
-<h4 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb"></a>安装mongodb</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.6.tgz    </span><br><span class="line">tar -zxvf mongodb-linux-x86_64-3.0.6.tgz</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line">mv src/mongodb-linux-x86_64-3.0.6 mongodb</span><br><span class="line"> </span><br><span class="line"><span class="comment">## path</span></span><br><span class="line">vi ~/.bashrc</span><br><span class="line"><span class="built_in">export</span> MONGO_HOME=/usr/<span class="built_in">local</span>/mongodb</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$MONGO_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>下载完毕之后，创建配置文件并启动服务：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##  创建数据目录</span></span><br><span class="line">mkdir /data</span><br><span class="line">mkdir /data/mongo</span><br><span class="line"> </span><br><span class="line"><span class="comment">## 创建配置文件</span></span><br><span class="line">vi /data/mongo/mongodb.cnf</span><br></pre></td></tr></table></figure>
-<p>其中配置文件的内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## /data/mongo/mongodb.cnf</span></span><br><span class="line">dbpath=/data/mongo/</span><br><span class="line"> </span><br><span class="line">logpath=/data/mongo/mongo.log</span><br><span class="line"> </span><br><span class="line">logappend=<span class="literal">true</span></span><br><span class="line"> </span><br><span class="line">fork=<span class="literal">true</span></span><br><span class="line"> </span><br><span class="line">port=27017</span><br><span class="line"> </span><br><span class="line">journal=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>通过读取配置文件启动 MongoDB 服务：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 配置文件方式启动mongo</span></span><br><span class="line">mongod -f /data/mongo/mongodb.cnf</span><br><span class="line"> </span><br><span class="line">mongod -f /data/mongo/mongodb.cnf &amp; （放到后台执行）</span><br></pre></td></tr></table></figure>
-<h4 id="安装Redis"><a href="#安装Redis" class="headerlink" title="安装Redis"></a>安装Redis</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">wget http://download.redis.io/releases/redis-2.8.17.tar.gz</span><br><span class="line">tar xzf redis-2.8.17.tar.gz</span><br><span class="line"><span class="built_in">cd</span> redis-2.8.17</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-<p>Make 完后 redis-2.8.17 目录下会出现编译后的 Redis 服务程序 redis-server，还有用于测试的客户端程序 redis-cli，两个程序位于安装目录 src 目录下。</p>
-<p>启动 Redis 服务：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> src</span><br><span class="line">./redis-server &amp;</span><br></pre></td></tr></table></figure>
-<h4 id="部署easy-mock"><a href="#部署easy-mock" class="headerlink" title="部署easy-mock"></a>部署easy-mock</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/easy-mock/easy-mock.git</span><br><span class="line"><span class="comment">## 安装依赖</span></span><br><span class="line"><span class="built_in">cd</span> easy-mock &amp;&amp; npm install</span><br></pre></td></tr></table></figure>
-<p>配置文件路径：<code>config/default.json</code>，可根据情况修改配置（默认不需要修改配置文件）</p>
-<h4 id="运行easy-mock"><a href="#运行easy-mock" class="headerlink" title="运行easy-mock"></a>运行easy-mock</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 运行</span></span><br><span class="line">[root@1.1.1.1 easy-mock]<span class="comment"># npm run dev</span></span><br><span class="line"> </span><br><span class="line">&gt; easy-mock@1.6.0 dev /usr/libra/easy-mock</span><br><span class="line">&gt; nodemon --ignore views/ --ignore public/ app</span><br><span class="line"> </span><br><span class="line">[nodemon] 1.14.11</span><br><span class="line">[nodemon] to restart at any time, enter `rs`</span><br><span class="line">[nodemon] watching: *.*</span><br><span class="line">[nodemon] starting `node app.js`</span><br><span class="line">server started at http://0.0.0.0:7300</span><br></pre></td></tr></table></figure>
-<p>通过上面的部署，便可以访问<code>http://127.0.0.1:7300</code>访问 Easy Mock的页面了</p>
-<p>用PM2对node进程守卫,保持永久在线.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装pm2 </span></span><br><span class="line">npm install -g pm2</span><br><span class="line"><span class="comment">## 使用pm2 运行全需要先build</span></span><br><span class="line">npm run build</span><br><span class="line">NODE_ENV=production pm2 start app.js</span><br></pre></td></tr></table></figure>
+<p>改为： JAVA_OPT=”${JAVA_OPT} -server -Xms256m -Xmx256m -Xmn128m”</p>
+<h4 id="启动borker"><a href="#启动borker" class="headerlink" title="启动borker"></a>启动borker</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.启动Broker</span></span><br><span class="line">nohup sh bin/mqbroker -n 127.0.0.1:9876 &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自定义配置文件</span></span><br><span class="line"><span class="comment"># nohup sh bin/mqbroker -n 192.168.0.5:9876 -c conf/broker.conf autoCreateTopicEnable=true &amp;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.查看启动日志</span></span><br><span class="line">tail -f ~/logs/rocketmqlogs/broker.log</span><br></pre></td></tr></table></figure>
+<h4 id="关闭rocketMq"><a href="#关闭rocketMq" class="headerlink" title="关闭rocketMq"></a>关闭rocketMq</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭NameServer</span></span><br><span class="line">sh bin/mqshutdown namesrv</span><br><span class="line"><span class="comment"># 关闭Borker</span></span><br><span class="line">sh bin/mqshutdown broker</span><br></pre></td></tr></table></figure>
 
                 
                 <hr>
@@ -299,9 +289,13 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2021/07/20/Caffeine缓存/" data-toggle="tooltip" data-placement="top" title="Caffeine缓存">&larr; Previous Post</a>
+                        <a href="/2021/07/22/ngrok实现内网穿透/" data-toggle="tooltip" data-placement="top" title="ngrok实现内网穿透">&larr; Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2021/07/20/基于docker配置mysql主从复制/" data-toggle="tooltip" data-placement="top" title="基于docker配置mysql主从复制">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -413,7 +407,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#参考文档"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">参考文档</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安装说明"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">安装说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#安装node"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">安装node</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#安装mongodb"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">安装mongodb</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#安装Redis"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">安装Redis</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#部署easy-mock"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">部署easy-mock</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#运行easy-mock"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">运行easy-mock</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#下载"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">下载</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#运维管理"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">运维管理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#rocketMq-安装"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">rocketMq 安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#解压与编译"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">解压与编译</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#启动Name-Server服务"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">启动Name Server服务</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#修改内存大小"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">修改内存大小</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#启动borker"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">启动borker</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#关闭rocketMq"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">关闭rocketMq</span></a></li></ol></li></ol>
             
           
           </div>
@@ -435,7 +429,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#easy-mock" title="easy-mock">easy-mock</a>
+                          <a class="tag" href="/tags/#RocketMQ" title="RocketMQ">RocketMQ</a>
                         
                     </div>
                 </section>
