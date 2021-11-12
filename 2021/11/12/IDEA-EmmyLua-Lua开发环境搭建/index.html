@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          Caffeine缓存 - 三叶草的星空
+          IDEA+EmmyLua Lua开发环境搭建 - 三叶草的星空
         
     </title>
 
-    <link rel="canonical" href="https://note.xcloudapi.com/2021/07/20/Caffeine缓存/">
+    <link rel="canonical" href="https://note.xcloudapi.com/2021/11/12/IDEA-EmmyLua-Lua开发环境搭建/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -108,23 +108,23 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Caffeine" title="Caffeine">Caffeine</a>
+                              <a class="tag" href="/tags/#Lua" title="Lua">Lua</a>
                             
-                              <a class="tag" href="/tags/#缓存" title="缓存">缓存</a>
+                              <a class="tag" href="/tags/#IDEA" title="IDEA">IDEA</a>
                             
                         </div>
-                        <h1>Caffeine缓存</h1>
-                        <h2 class="subheading">介绍Caffeine缓存机制，以及与GuavaCache的差异</h2>
+                        <h1>IDEA+EmmyLua Lua开发环境搭建</h1>
+                        <h2 class="subheading">IDEA安装EmmyLua插件，方便本地调试lua脚本</h2>
                         <span class="meta">
                             Posted by guanyang on
-                            2021-07-20
+                            2021-11-12
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">699</span> and
-                                Reading Time <span class="post-count">2</span> Minutes
+                                Words <span class="post-count">240</span> and
+                                Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -272,66 +272,26 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>Caffeine提供了灵活的构造方法，从而创建可以满足如下特性的本地缓存：</p>
-<ol>
-<li>自动把数据加载到本地缓存中，并且可以配置异步；</li>
-<li>基于数量剔除策略；</li>
-<li>基于失效时间剔除策略，这个时间是从最后一次访问或者写入算起；</li>
-<li>异步刷新；</li>
-<li>Key会被包装成Weak引用；</li>
-<li>Value会被包装成Weak或者Soft引用，从而能被GC掉，而不至于内存泄漏；</li>
-<li>数据剔除提醒；</li>
-<li>写入广播机制；</li>
-<li>缓存访问可以统计；</li>
-</ol>
-<h3 id="过期机制"><a href="#过期机制" class="headerlink" title="过期机制"></a>过期机制</h3><p>Caffeine的过期机制都是在构造Cache的时候申明，主要有如下几种：</p>
-<ol>
-<li>expireAfterWrite：表示自从最后一次写入后多久就会过期；</li>
-<li>expireAfterAccess：表示自从最后一次访问（写入或者读取）后多久就会过期；</li>
-<li>expireAfter：自定义过期策略；</li>
-</ol>
-<h3 id="刷新机制"><a href="#刷新机制" class="headerlink" title="刷新机制"></a>刷新机制</h3><p>在构造Cache时通过refreshAfterWrite方法指定刷新周期，例如refreshAfterWrite(10, TimeUnit.SECONDS)表示10秒钟刷新一次</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.build(<span class="keyword">new</span> CacheLoader&lt;String, String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">load</span><span class="params">(String k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 这里我们就可以从数据库或者其他地方查询最新的数据</span></span><br><span class="line">        <span class="keyword">return</span> getValue(k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Caffeine的刷新机制是「被动」的</li>
-<li>它的实现原理是在get方法中，调用afterRead的时候，调用refreshIfNeeded方法判断是否需要刷新数据</li>
+                <h3 id="IDEA安装EmmyLua插件"><a href="#IDEA安装EmmyLua插件" class="headerlink" title="IDEA安装EmmyLua插件"></a>IDEA安装EmmyLua插件</h3><ul>
+<li><a href="https://emmylua.github.io/installation/repo.html" target="_blank" rel="noopener">https://emmylua.github.io/installation/repo.html</a></li>
 </ul>
-<h3 id="剔除机制"><a href="#剔除机制" class="headerlink" title="剔除机制"></a>剔除机制</h3><p>在构造Cache时可以通过removalListener方法申明剔除监听器，从而可以跟踪本地缓存中被剔除的数据历史信息。根据RemovalCause.java枚举值可知，剔除策略有如下5种：</p>
-<ul>
-<li><p>「EXPLICIT」：调用方法（例如：cache.invalidate(key)、cache.invalidateAll）显示剔除数据；</p>
-</li>
-<li><p>「REPLACED」：不是真正被剔除，而是用户调用一些方法（例如：put()，putAll()等）盖了之前的值；</p>
-</li>
-<li><p>「COLLECTED」：表示缓存中的Key或者Value被垃圾回收掉了；</p>
-</li>
-<li><p>「EXPIRED」: expireAfterWrite/expireAfterAccess约定时间内没有任何访问导致被剔除；</p>
-</li>
-<li><p>「SIZE」：超过maximumSize限制的元素个数被剔除的原因；</p>
-</li>
+<h3 id="下载MoDebug"><a href="#下载MoDebug" class="headerlink" title="下载MoDebug"></a>下载MoDebug</h3><ul>
+<li><a href="https://github.com/pkulchenko/MobDebug" target="_blank" rel="noopener">https://github.com/pkulchenko/MobDebug</a></li>
+<li>从github下载MobDebug项目，把项目中的mobdebug.lua，拷贝到项目的src目录下，内核基于mobdebug.lua </li>
 </ul>
-<h3 id="GuavaCache和Caffeine差异"><a href="#GuavaCache和Caffeine差异" class="headerlink" title="GuavaCache和Caffeine差异"></a>GuavaCache和Caffeine差异</h3><ol>
-<li><p>剔除算法方面，GuavaCache采用的是「LRU」算法，而Caffeine采用的是「Window TinyLFU」算法，这是两者之间最大，也是根本的区别。</p>
-</li>
-<li><p>立即失效方面，Guava会把立即失效 (例如：expireAfterAccess(0) and expireAfterWrite(0)) 转成设置最大Size为0。这就会导致剔除提醒的原因是SIZE而不是EXPIRED。Caffiene能正确识别这种剔除原因。</p>
-</li>
-<li><p>取代提醒方面，Guava只要数据被替换，不管什么原因，都会触发剔除监听器。而Caffiene在取代值和先前值的引用完全一样时不会触发监听器。</p>
-</li>
-<li><p>异步化方方面，Caffiene的很多工作都是交给线程池去做的（默认：ForkJoinPool.commonPool()），例如：剔除监听器，刷新机制，维护工作等。</p>
-</li>
-</ol>
-
+<h3 id="关键步骤（mac安装）"><a href="#关键步骤（mac安装）" class="headerlink" title="关键步骤（mac安装）"></a>关键步骤（mac安装）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-- 安装lua</span><br><span class="line">brew install lua</span><br><span class="line"></span><br><span class="line">-- 安装luarocks工具</span><br><span class="line">brew install luarocks</span><br><span class="line"></span><br><span class="line">-- 安装luasocket</span><br><span class="line">luarocks install luasocket</span><br><span class="line"></span><br><span class="line">-- 安装lua-cjson（可选）</span><br><span class="line">luarocks install lua-cjson 2.1.0-1</span><br><span class="line"></span><br><span class="line">-- 安装redis-lua（可选）</span><br><span class="line">luarocks install redis-lua</span><br></pre></td></tr></table></figure>
+<h3 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h3><ul>
+<li><a href="https://emmylua.github.io/run/remote.html" target="_blank" rel="noopener">https://emmylua.github.io/run/remote.html</a></li>
+</ul>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">--- Generated by EmmyLua(https://github.com/EmmyLua)</span><br><span class="line">--- Created by gy.</span><br><span class="line">--- DateTime: 2021/10/27 20:16</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">-- 调试配置相关代码，实际使用不需要 start--</span><br><span class="line">--require(<span class="string">"mobdebug"</span>).start()</span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> cjson = require <span class="string">'cjson'</span></span><br><span class="line"><span class="built_in">local</span> redis = require <span class="string">'redis'</span></span><br><span class="line"><span class="built_in">local</span> host = <span class="string">"127.0.0.1"</span></span><br><span class="line"><span class="built_in">local</span> port = 6379</span><br><span class="line">client = redis.connect(host, port)</span><br><span class="line"></span><br><span class="line">redis.call = <span class="keyword">function</span>(cmd, ...)</span><br><span class="line">    <span class="built_in">return</span> assert(load(<span class="string">'return client:'</span> .. string.lower(cmd) .. <span class="string">'(...)'</span>))(...)</span><br><span class="line">end</span><br><span class="line">-- 调试配置相关代码，实际使用不需要 end--</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> KEYS = &#123; <span class="string">"test1"</span>, <span class="string">"test2"</span> &#125;</span><br><span class="line"><span class="built_in">local</span> ARGV = &#123; <span class="string">"1"</span>, <span class="string">'&#123;\"age\":\"23\",\"name\":\"test\"&#125;'</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> value = redis.call(<span class="string">"GET"</span>, <span class="string">"key1"</span>)</span><br><span class="line"><span class="built_in">print</span>(value)</span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> queueListRedisKey = KEYS[1]</span><br><span class="line"><span class="built_in">print</span>(queueListRedisKey)</span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> userInfoObj = cjson.decode(ARGV[2])</span><br><span class="line"><span class="built_in">print</span>(cjson.encode(userInfoObj))</span><br></pre></td></tr></table></figure>
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2021/07/20/基于docker配置mysql主从复制/" data-toggle="tooltip" data-placement="top" title="基于docker配置mysql主从复制">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2021/07/20/easy-mock服务器部署/" data-toggle="tooltip" data-placement="top" title="easy-mock服务器部署">Next Post &rarr;</a>
+                        <a href="/2021/07/22/ngrok实现内网穿透/" data-toggle="tooltip" data-placement="top" title="ngrok实现内网穿透">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -444,7 +404,7 @@
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#特性"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">特性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#过期机制"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">过期机制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#刷新机制"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">刷新机制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#剔除机制"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">剔除机制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#GuavaCache和Caffeine差异"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">GuavaCache和Caffeine差异</span></a></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#IDEA安装EmmyLua插件"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">IDEA安装EmmyLua插件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#下载MoDebug"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">下载MoDebug</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#关键步骤（mac安装）"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">关键步骤（mac安装）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#远程调试"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">远程调试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#示例代码"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">示例代码</span></a></li></ol>
             
           
           </div>
@@ -466,9 +426,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Caffeine" title="Caffeine">Caffeine</a>
+                          <a class="tag" href="/tags/#Lua" title="Lua">Lua</a>
                         
-                          <a class="tag" href="/tags/#缓存" title="缓存">缓存</a>
+                          <a class="tag" href="/tags/#IDEA" title="IDEA">IDEA</a>
                         
                     </div>
                 </section>
