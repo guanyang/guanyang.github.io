@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="我们生活在阴沟里，但有人依然仰望星空。">
+    <meta name="keyword"  content="技术, 人生">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          Launcher通用启动器-使用说明 - 三叶草的星空
+        
+    </title>
+
+    <link rel="canonical" href="https://note.xcloudapi.com/2022/06/08/Launcher通用启动器-使用说明/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#docker" title="docker">docker</a>
+                            
+                              <a class="tag" href="/tags/#maven" title="maven">maven</a>
+                            
+                              <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                            
+                              <a class="tag" href="/tags/#启动器" title="启动器">启动器</a>
+                            
+                              <a class="tag" href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                            
+                              <a class="tag" href="/tags/#plugin" title="plugin">plugin</a>
+                            
+                              <a class="tag" href="/tags/#shell" title="shell">shell</a>
+                            
+                              <a class="tag" href="/tags/#javaagent" title="javaagent">javaagent</a>
+                            
+                        </div>
+                        <h1>Launcher通用启动器-使用说明</h1>
+                        <h2 class="subheading">启动器脚本及参数使用说明</h2>
+                        <span class="meta">
+                            Posted by guanyang on
+                            2022-06-08
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">651</span> and
+                                Reading Time <span class="post-count">2</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">三叶草的星空</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/categories/">Categories</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/photography/">Photography</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://music.xcloudapi.com" target="_blank">Music Website</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h3><p>使用 <code>-h</code> 或者 <code>--help</code> 参数可以查看启动器以及每个命令的使用说明和用法</p>
+<ul>
+<li><code>launcher.sh -h</code></li>
+<li><code>launcher.sh [start/stop/restart/status]-h</code></li>
+</ul>
+<h3 id="关于应用启动参数配置"><a href="#关于应用启动参数配置" class="headerlink" title="关于应用启动参数配置"></a>关于应用启动参数配置</h3><p>应用启动参数有3种指定方式</p>
+<h4 id="通过参数指定"><a href="#通过参数指定" class="headerlink" title="通过参数指定"></a>通过参数指定</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>短参数</th>
+<th>长参数</th>
+<th>通过系统变量、环境变量（见表格下方备注）</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>—args</td>
+<td></td>
+<td>设置应用参数</td>
+<td>-a server.port=80</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>—daemon</td>
+<td>LAUNCHER_START_IN_DAEMON</td>
+<td>使用后台模式执行</td>
+<td>-d</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>—app-environment</td>
+<td>LAUNCHER_APP_ENV</td>
+<td>设置应用所处环境(prod/pre/stress/live/dev)</td>
+<td>-e dev</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>—app-region</td>
+<td>LAUNCHER_APP_REGION</td>
+<td>设置应用所属的区域，例如IDC_CODE）</td>
+<td>-r beijing</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>—app-instance-id</td>
+<td>LAUNCHER_INSTANCE_ID</td>
+<td>手动指定本实例ID</td>
+<td></td>
+</tr>
+<tr>
+<td>-jo</td>
+<td>—java-opts</td>
+<td></td>
+<td>设置jvm参数，允许设置多次（追加）</td>
+<td>-jo ‘-Xmx4g -Xms4g’</td>
+</tr>
+<tr>
+<td>-ld</td>
+<td>—log-dir</td>
+<td>LAUNCHER_APP_LOG_DIR</td>
+<td>设置日志目录，默认为./logs/$APP_NAME/$APP_INSTANCE_ID</td>
+<td>—ld /home/www/logs</td>
+</tr>
+<tr>
+<td>-ldt</td>
+<td>—log-dir-type</td>
+<td>LAUNCHER_APP_LOG_DIR_TYPE</td>
+<td>日志目录类型（见表格下方备注），base/app/instance</td>
+<td></td>
+</tr>
+<tr>
+<td>-mc</td>
+<td>—main-class</td>
+<td></td>
+<td>设置应用启动类</td>
+<td>-mc org.gy.framework.sample.main</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>LAUNCHER_APP_ID</td>
+<td>设置应用的ID</td>
+<td></td>
+</tr>
+<tr>
+<td>-n</td>
+<td>—app-name</td>
+<td>LAUNCHER_APP_NAME</td>
+<td>设置应用名称</td>
+<td>-n launcher-sample</td>
+</tr>
+<tr>
+<td></td>
+<td>—restart</td>
+<td>LAUNCHER_AUTORESTART</td>
+<td>如果发现应用已经启动，则使用上次的参数自动重启</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>—dry-run</td>
+<td></td>
+<td>仅打印启动日志，不启动服务（调试用）</td>
+<td></td>
+</tr>
+<tr>
+<td>-h</td>
+<td>—help</td>
+<td></td>
+<td>打印参数说明</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>—javaagent-bs</td>
+<td>LAUNCHER_JAVAAGENT_BACKEND_SERVICE</td>
+<td>指定Javaagent Backend服务地址</td>
+<td>—javaagent-bs ‘127.0.0.1:11800’</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>关于系统变量、环境变量的设置模式</strong> ： 该模式针对发布系统对接，不建议用户手动设置；环境变量设置模式只针对容器环境生效；</p>
+<p><strong>关于日志目录类型</strong> : 启动器统一了日志目录层级规范，在目录层级中必须包含<code>应用名/实例ID</code>，所以当使用<code>-ld</code>设置了日志目录后需要使用 <code>-ldt</code> 指定日志目录的层级，默认为 <code>base</code>。</p>
+<ul>
+<li><p><code>base</code> ：指定日志目录类型为基础目录，启动器会在设置的日志目录中创建<code>应用名/实例ID</code>子目录；</p>
+</li>
+<li><p><code>-ldt app</code> ：指定日志目录类型为应用目录，启动器会在设置的日志目录中创建<code>实例ID</code>子目录；</p>
+</li>
+<li><p><code>-ldt instance</code> ：指定日志目录类型为实例目录，启动器不会创建子目录；</p>
+</li>
+</ul>
+<h3 id="应用停止"><a href="#应用停止" class="headerlink" title="应用停止"></a>应用停止</h3><p>参数请查看<code>launcher.sh stop -h</code></p>
+<h3 id="应用重启"><a href="#应用重启" class="headerlink" title="应用重启"></a>应用重启</h3><p>参数请查看<code>launcher.sh restart -h</code></p>
+<h3 id="应用状态检查"><a href="#应用状态检查" class="headerlink" title="应用状态检查"></a>应用状态检查</h3><p>参数请查看<code>launcher.sh status -h</code></p>
+<h3 id="启动参数示例"><a href="#启动参数示例" class="headerlink" title="启动参数示例"></a>启动参数示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;launcher.sh start -d -n my-service-name -jo &#39;-Dfile.encoding&#x3D;UTF-8 -Duser.timezone&#x3D;Asia&#x2F;Shanghai  -XX:InitialRAMPercentage&#x3D;50.0 -XX:MaxRAMPercentage&#x3D;75.0 -XX:+UseG1GC  -XX:MaxGCPauseMillis&#x3D;150&#39; -a &#39;--server.port&#x3D;8081&#39;</span><br></pre></td></tr></table></figure>
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/" data-toggle="tooltip" data-placement="top" title="Launcher通用启动器-Dockerfile扩展支持">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/06/08/Launcher通用启动器/" data-toggle="tooltip" data-placement="top" title="Launcher通用启动器">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                
+<link rel="stylesheet" href="/css/music-player/fonts/iconfont.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/reset.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/player.css">
+
+
+<div class="music-player">
+    <audio class="music-player__audio" ></audio>
+    <div class="music-player__main">
+        <div class="music-player__blur"></div>
+        <div class="music-player__disc">
+            <div class="music-player__image">
+                <img width="100%" src="" alt="">
+            </div>
+            <div class="music-player__pointer"><img width="100%" src="/img/cd_tou.png" alt=""></div>
+        </div>
+        <div class="music-player__controls">
+            <div class="music__info">
+                <h3 class="music__info--title">...</h3>
+                <p class="music__info--singer">...</p>
+            </div>
+            <div class="player-control">
+                <div class="player-control__content">
+                    <div class="player-control__btns">
+                        <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+                        <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i></div>
+                        <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+                        <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i></div>
+                    </div>
+                    <div class="player-control__volume">
+                        <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+                        <div class="control__volume--progress player_progress"></div>
+                    </div>
+                </div>
+                <div class="player-control__content">
+                    <div class="player__song--progress player_progress"></div>
+                    <div class="player__song--timeProgess nowTime">00:00</div>
+                    <div class="player__song--timeProgess totalTime">00:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/music-player/utill.js"></script>
+
+
+<script src="/js/music-player/jquery.min.js"></script>
+
+<!-- netease; qqkg -->
+<!--
+<script src="/js/music-player/player.js?library=config.music.library.js"></script>
+-->
+<script src="../../../../js/music-player/player.js?library=netease&music=https://kg.qq.com/node/play?s=7deFpz7Z26Jmv7di&g_f=share_html"></script>
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#查看帮助"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">查看帮助</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#关于应用启动参数配置"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">关于应用启动参数配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#通过参数指定"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">通过参数指定</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#应用停止"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">应用停止</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#应用重启"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">应用重启</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#应用状态检查"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">应用状态检查</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#启动参数示例"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">启动参数示例</span></a></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#docker" title="docker">docker</a>
+                        
+                          <a class="tag" href="/tags/#maven" title="maven">maven</a>
+                        
+                          <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                        
+                          <a class="tag" href="/tags/#启动器" title="启动器">启动器</a>
+                        
+                          <a class="tag" href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                        
+                          <a class="tag" href="/tags/#plugin" title="plugin">plugin</a>
+                        
+                          <a class="tag" href="/tags/#shell" title="shell">shell</a>
+                        
+                          <a class="tag" href="/tags/#javaagent" title="javaagent">javaagent</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://music.xcloudapi.com" target="_blank">guanyang&#39;s MusicWebsite</a></li>
+                    
+                        <li><a href="https://www.xcloudapi.com" target="_blank">guanyang&#39;s Web</a></li>
+                    
+                        <li><a href="https://github.com/guanyang" target="_blank">guanyang&#39;s Github</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/guanyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/cnyangguan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/cnyangguan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; guanyang 2022 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/guanyang/guanyang.github.io" target="_blank" rel="noopener">
+                        <i>guanyang</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=guanyang&repo=guanyang.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://note.xcloudapi.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🌱&quot;,&quot;just do it&quot;,&quot;🌾&quot;,&quot;🍀&quot;,&quot;don&#39;t give up&quot;,&quot;🍂&quot;,&quot;🌻&quot;,&quot;try it again&quot;,&quot;🍃&quot;,&quot;never say die&quot;,&quot;🌵&quot;,&quot;🌿&quot;,&quot;🌴&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot; ,&quot;rgb(184,90,154)&quot; ,&quot;rgb(157,211,250)&quot; ,&quot;rgb(255,0,0)&quot; ,&quot;rgb(242,153,29)&quot; ,&quot;rgb(23,204,16)&quot; ,&quot;rgb(222,0,0)&quot; ,&quot;rgb(22,36,92)&quot; ,&quot;rgb(127,24,116)&quot; ,&quot;rgb(119,195,79)&quot; ,&quot;rgb(4,77,34)&quot; ,&quot;rgb(122,2,60)&quot;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>

@@ -289,9 +289,341 @@
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
 
 
 <!-- Main Content -->
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/06/08/Launcher通用启动器-测试用例/">
+                <h2 class="post-title">
+                    Launcher通用启动器-测试用例
+                </h2>
+                <h3 class="post-subtitle">
+                    启动器常见测试用例介绍
+                </h3>
+                <div class="post-content-preview">
+                    启动超时LAUNCHER_START_TIMEOUT=3 ./launcher.sh start -n test1确认是否超时退出
+退出超时LAUNCHER_STOP_TIMEOUT=3 ./launcher.sh start -n test1
+启动时被其他用户kill（主程序运行，健康检查中）./launcher.sh start -n test1
+启动完毕后被其他用户kill./laun......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2022-06-08
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                      <a href="/tags/#maven" title="maven">maven</a>
+                    
+                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                    
+                      <a href="/tags/#启动器" title="启动器">启动器</a>
+                    
+                      <a href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                    
+                      <a href="/tags/#plugin" title="plugin">plugin</a>
+                    
+                      <a href="/tags/#shell" title="shell">shell</a>
+                    
+                      <a href="/tags/#javaagent" title="javaagent">javaagent</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
+                <h2 class="post-title">
+                    Launcher通用启动器-日志配置指南
+                </h2>
+                <h3 class="post-subtitle">
+                    launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
+                </h3>
+                <div class="post-content-preview">
+                    功能简介launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性。当用户有个性化日志需求时（例如：把部分特定的日志打印到指定目录上）也可以通过自定义日志片段来满足所述需求。
+日志框架配置方式launcher目前仅支持SpringBoot项目，请使用SpringBoot默认日志框架 org.springframework.boot:spring-boot-starter......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2022-06-08
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                      <a href="/tags/#maven" title="maven">maven</a>
+                    
+                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                    
+                      <a href="/tags/#启动器" title="启动器">启动器</a>
+                    
+                      <a href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                    
+                      <a href="/tags/#plugin" title="plugin">plugin</a>
+                    
+                      <a href="/tags/#shell" title="shell">shell</a>
+                    
+                      <a href="/tags/#javaagent" title="javaagent">javaagent</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                <h2 class="post-title">
+                    Launcher通用启动器-Maven插件配置
+                </h2>
+                <h3 class="post-subtitle">
+                    启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
+                </h3>
+                <div class="post-content-preview">
+                    概览
+通过配置maven插件，可以快速集成launcher启动器功能，接入简单快捷
+
+添加maven配置12345678910111213141516171819202122232425262728&lt;!-- Project pom.xml --&gt;&lt;project&gt;    [...]    &lt;build&gt;        [...]        &lt;pl......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2022-06-08
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                      <a href="/tags/#maven" title="maven">maven</a>
+                    
+                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                    
+                      <a href="/tags/#启动器" title="启动器">启动器</a>
+                    
+                      <a href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                    
+                      <a href="/tags/#plugin" title="plugin">plugin</a>
+                    
+                      <a href="/tags/#shell" title="shell">shell</a>
+                    
+                      <a href="/tags/#javaagent" title="javaagent">javaagent</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
+                <h2 class="post-title">
+                    Launcher通用启动器-Dockerfile扩展支持
+                </h2>
+                <h3 class="post-subtitle">
+                    提供了Dockerfile生成功能，支持定制化基础运行环境
+                </h3>
+                <div class="post-content-preview">
+                    概览
+launcher提供了Dockerfile生成功能，支持定制化基础运行环境
+用户可以在launcher-maven-plugin的 pom 配置中对 Dockerfile 进行修改，从而支持对业务基础环境的定制化
+进行 mvn package 之后，Dockerfile会生成在${project_module}/target/Dockerfile
+
+Dockerfile扩展点配置
+&l......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2022-06-08
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                      <a href="/tags/#maven" title="maven">maven</a>
+                    
+                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                    
+                      <a href="/tags/#启动器" title="启动器">启动器</a>
+                    
+                      <a href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                    
+                      <a href="/tags/#plugin" title="plugin">plugin</a>
+                    
+                      <a href="/tags/#shell" title="shell">shell</a>
+                    
+                      <a href="/tags/#javaagent" title="javaagent">javaagent</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                <h2 class="post-title">
+                    Launcher通用启动器-使用说明
+                </h2>
+                <h3 class="post-subtitle">
+                    启动器脚本及参数使用说明
+                </h3>
+                <div class="post-content-preview">
+                    查看帮助使用 -h 或者 --help 参数可以查看启动器以及每个命令的使用说明和用法
+
+launcher.sh -h
+launcher.sh [start/stop/restart/status]-h
+
+关于应用启动参数配置应用启动参数有3种指定方式
+通过参数指定
+
+
+
+短参数
+长参数
+通过系统变量、环境变量（见表格下方备注）
+说明
+示例
+
+
+
+
+-a
+—args
+
+设置应用参数
+-a s......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2022-06-08
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                      <a href="/tags/#maven" title="maven">maven</a>
+                    
+                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                    
+                      <a href="/tags/#启动器" title="启动器">启动器</a>
+                    
+                      <a href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                    
+                      <a href="/tags/#plugin" title="plugin">plugin</a>
+                    
+                      <a href="/tags/#shell" title="shell">shell</a>
+                    
+                      <a href="/tags/#javaagent" title="javaagent">javaagent</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/06/08/Launcher通用启动器/">
+                <h2 class="post-title">
+                    Launcher通用启动器
+                </h2>
+                <h3 class="post-subtitle">
+                    launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
+                </h3>
+                <div class="post-content-preview">
+                    概览
+launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数。
+用户可以通过Maven插件的方式引入launcher，通过一些简单的配置即可将Java通过launcher启动起来。
+
+源码说明
+Github源码：https://github.com/guanyang/spring-simple-framework
+
+快速接入
+launcher的新......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2022-06-08
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                      <a href="/tags/#maven" title="maven">maven</a>
+                    
+                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                    
+                      <a href="/tags/#启动器" title="启动器">启动器</a>
+                    
+                      <a href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                    
+                      <a href="/tags/#plugin" title="plugin">plugin</a>
+                    
+                      <a href="/tags/#shell" title="shell">shell</a>
+                    
+                      <a href="/tags/#javaagent" title="javaagent">javaagent</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
 
     
 
@@ -488,270 +820,6 @@ Github源码：https://github.com/guanyang/spring-base-parent
 
     
 
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/06/08/Spring工具包-log/">
-                <h2 class="post-title">
-                    Spring工具包-log
-                </h2>
-                <h3 class="post-subtitle">
-                    Spring工具包日志组件，定义日志标准输出格式，方便排查线上问题
-                </h3>
-                <div class="post-content-preview">
-                    概览
-针对所有请求，添加x-trace-id，方便追踪，参考LogInterceptor
-增加日志输出切面，方便排查方法调用日志，参考LogTraceAspect
-
-使用指南
-Github源码：https://github.com/guanyang/spring-base-parent
-最新Maven坐标
-
-12345&lt;dependency&gt;    &lt;groupId&gt;......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by guanyang on
-                    2022-06-08
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                    
-                      <a href="/tags/#Spring" title="Spring">Spring</a>
-                    
-                      <a href="/tags/#log" title="log">log</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/06/08/Spring工具包-lock/">
-                <h2 class="post-title">
-                    Spring工具包-lock
-                </h2>
-                <h3 class="post-subtitle">
-                    Spring工具包分布式锁组件，基于Starter接入，方便快捷
-                </h3>
-                <div class="post-content-preview">
-                    概览
-基于redis实现分布式锁，开箱即用，避免重复造轮子，提升效率
-依赖StringRedisTemplate，如果springboot中没有配置StringRedisTemplate，则不可使用
-
-使用指南
-Github源码：https://github.com/guanyang/spring-base-parent
-最新Maven坐标
-
-12345&lt;dependency&gt; ......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by guanyang on
-                    2022-06-08
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                    
-                      <a href="/tags/#Spring" title="Spring">Spring</a>
-                    
-                      <a href="/tags/#DistributedLock" title="DistributedLock">DistributedLock</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/06/08/Spring工具包-limit/">
-                <h2 class="post-title">
-                    Spring工具包-limit
-                </h2>
-                <h3 class="post-subtitle">
-                    Spring工具包限流组件，支持全局限流和SPI扩展
-                </h3>
-                <div class="post-content-preview">
-                    概览
-当前组件主要用于应用访问频率限制，添加注解LimitCheck即可快速接入使用
-默认支持基于redis实现的频率访问控制，需要应用配置StringRedisTemplate实例
-支持SPI方式扩展实现，接口类：org.gy.framework.limit.core.ILimitCheckService
-
-使用指南
-Github源码：https://github.com/guanyang......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by guanyang on
-                    2022-06-08
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                    
-                      <a href="/tags/#Spring" title="Spring">Spring</a>
-                    
-                      <a href="/tags/#RateLimiter" title="RateLimiter">RateLimiter</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/06/08/Spring工具包-csrf/">
-                <h2 class="post-title">
-                    Spring工具包-csrf
-                </h2>
-                <h3 class="post-subtitle">
-                    Spring工具包安全组件，支持csrf防护
-                </h3>
-                <div class="post-content-preview">
-                    概览
-csrf防护组件，支持referer验证、双重cookie验证，支持多种验证方式
-
-使用指南
-Github源码：https://github.com/guanyang/spring-base-parent
-最新Maven坐标
-
-12345&lt;dependency&gt;    &lt;groupId&gt;org.gy.framework&lt;&#x2F;groupId&gt; ......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by guanyang on
-                    2022-06-08
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                    
-                      <a href="/tags/#Spring" title="Spring">Spring</a>
-                    
-                      <a href="/tags/#csrf" title="csrf">csrf</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/06/08/Spring工具包-core/">
-                <h2 class="post-title">
-                    Spring工具包-core
-                </h2>
-                <h3 class="post-subtitle">
-                    Spring工具包核心，定义基础DTO、异常及错误码
-                </h3>
-                <div class="post-content-preview">
-                    概览
-定义DTO，规范输入输出格式，参考Response
-定义错误码、异常，参考CommonException
-定义事件接口契约，参考EventI
-添加Filter和FilterChain支持，方便自由定制
-定义TraceId生成工具，参考TraceUtils
-添加StateMachine状态机，支持Fluent API调用
-定义枚举类标准，统一格式，参考IStdEnum
-
-使用指南
-Git......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by guanyang on
-                    2022-06-08
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                    
-                      <a href="/tags/#Spring" title="Spring">Spring</a>
-                    
-                      <a href="/tags/#Exception" title="Exception">Exception</a>
-                    
-                      <a href="/tags/#Filter" title="Filter">Filter</a>
-                    
-                      <a href="/tags/#StateMachine" title="StateMachine">StateMachine</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/06/08/Spring工具包概述/">
-                <h2 class="post-title">
-                    Spring工具包概述
-                </h2>
-                <h3 class="post-subtitle">
-                    制定Java工程基础工具包规范，避免重复造轮子，提升效率，统一的父pom、三方依赖库及版本管理
-                </h3>
-                <div class="post-content-preview">
-                    概览
-依赖规范，统一的父pom，三方依赖库、版本管理
-常用组件、工具类封装，方便代码复用
-常用Starter组件，开箱即用，提升效率
-
-使用指南
-Github源码：https://github.com/guanyang/spring-base-parent
-最新Maven坐标12345&lt;dependency&gt;  &lt;groupId&gt;org.gy.framework&lt......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by guanyang on
-                    2022-06-08
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                    
-                      <a href="/tags/#Spring" title="Spring">Spring</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
 
 
 <!-- Pager -->
@@ -817,7 +885,7 @@ Github源码：https://github.com/guanyang/spring-base-parent
             
         
             
-        
+            <a href="/tags/#docker" title="docker" rel="7">docker</a>
             
         
             
@@ -826,6 +894,10 @@ Github源码：https://github.com/guanyang/spring-base-parent
         
             
         
+            
+        
+            
+            <a href="/tags/#maven" title="maven" rel="7">maven</a>
             
         
             
@@ -843,7 +915,7 @@ Github源码：https://github.com/guanyang/spring-base-parent
             
         
             
-            <a href="/tags/#SpringBoot" title="SpringBoot" rel="10">SpringBoot</a>
+            <a href="/tags/#SpringBoot" title="SpringBoot" rel="16">SpringBoot</a>
             
         
             
@@ -876,6 +948,26 @@ Github源码：https://github.com/guanyang/spring-base-parent
         
             
         
+            
+        
+            
+            <a href="/tags/#启动器" title="启动器" rel="6">启动器</a>
+            
+        
+            
+            <a href="/tags/#dockerfile" title="dockerfile" rel="6">dockerfile</a>
+            
+        
+            
+            <a href="/tags/#plugin" title="plugin" rel="6">plugin</a>
+            
+        
+            
+            <a href="/tags/#shell" title="shell" rel="6">shell</a>
+            
+        
+            
+            <a href="/tags/#javaagent" title="javaagent" rel="6">javaagent</a>
             
         
     </div>
@@ -965,23 +1057,23 @@ Github源码：https://github.com/guanyang/spring-base-parent
     <ul>
       
         <li>
-          <a href="/2022/06/08/Java%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84%E5%AE%9A%E4%B9%89/">Java工程架构定义</a>
+          <a href="/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/">Launcher通用启动器-测试用例</a>
         </li>
       
         <li>
-          <a href="/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-xss/">Spring工具包-xss</a>
+          <a href="/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">Launcher通用启动器-日志配置指南</a>
         </li>
       
         <li>
-          <a href="/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-util/">Spring工具包-util</a>
+          <a href="/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-Maven%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/">Launcher通用启动器-Maven插件配置</a>
         </li>
       
         <li>
-          <a href="/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-sign/">Spring工具包-sign</a>
+          <a href="/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-Dockerfile%E6%89%A9%E5%B1%95%E6%94%AF%E6%8C%81/">Launcher通用启动器-Dockerfile扩展支持</a>
         </li>
       
         <li>
-          <a href="/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-log/">Spring工具包-log</a>
+          <a href="/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">Launcher通用启动器-使用说明</a>
         </li>
       
     </ul>
@@ -1008,7 +1100,7 @@ Github源码：https://github.com/guanyang/spring-base-parent
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">5</span></li></ul>
     </div>
 
         <hr>

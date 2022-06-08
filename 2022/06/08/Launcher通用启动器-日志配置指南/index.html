@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="我们生活在阴沟里，但有人依然仰望星空。">
+    <meta name="keyword"  content="技术, 人生">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          Launcher通用启动器-日志配置指南 - 三叶草的星空
+        
+    </title>
+
+    <link rel="canonical" href="https://note.xcloudapi.com/2022/06/08/Launcher通用启动器-日志配置指南/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#docker" title="docker">docker</a>
+                            
+                              <a class="tag" href="/tags/#maven" title="maven">maven</a>
+                            
+                              <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                            
+                              <a class="tag" href="/tags/#启动器" title="启动器">启动器</a>
+                            
+                              <a class="tag" href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                            
+                              <a class="tag" href="/tags/#plugin" title="plugin">plugin</a>
+                            
+                              <a class="tag" href="/tags/#shell" title="shell">shell</a>
+                            
+                              <a class="tag" href="/tags/#javaagent" title="javaagent">javaagent</a>
+                            
+                        </div>
+                        <h1>Launcher通用启动器-日志配置指南</h1>
+                        <h2 class="subheading">launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性</h2>
+                        <span class="meta">
+                            Posted by guanyang on
+                            2022-06-08
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.3k</span> and
+                                Reading Time <span class="post-count">5</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">三叶草的星空</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/categories/">Categories</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/photography/">Photography</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://music.xcloudapi.com" target="_blank">Music Website</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="功能简介"><a href="#功能简介" class="headerlink" title="功能简介"></a>功能简介</h3><p>launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性。当用户有个性化日志需求时（例如：把部分特定的日志打印到指定目录上）也可以通过自定义日志片段来满足所述需求。</p>
+<h3 id="日志框架配置方式"><a href="#日志框架配置方式" class="headerlink" title="日志框架配置方式"></a>日志框架配置方式</h3><p>launcher目前仅支持SpringBoot项目，请使用SpringBoot默认日志框架 org.springframework.boot:spring-boot-starter-logging，大多数情况下已经自带，无需手动配置。</p>
+<h3 id="不兼容的依赖"><a href="#不兼容的依赖" class="headerlink" title="不兼容的依赖"></a>不兼容的依赖</h3><ul>
+<li>仅支持Logback，如果整个依赖树中未找到 ch.qos.logback:logback-classic 会构建失败。</li>
+<li>如果发现依赖树中包含LOG4J的SLF4J实现 org.apache.logging.log4j:log4j-slf4j-impl 会构建失败。</li>
+</ul>
+<h3 id="个性化日志"><a href="#个性化日志" class="headerlink" title="个性化日志"></a>个性化日志</h3><p>launcher支持Logback中的File Inclusion特性，能够让用户自定义日志配置片段，以完成用户的个性化日志需求。</p>
+<h4 id="配置流程"><a href="#配置流程" class="headerlink" title="配置流程"></a>配置流程</h4><h5 id="创建日志配置片段-logback-snippet-xml"><a href="#创建日志配置片段-logback-snippet-xml" class="headerlink" title="创建日志配置片段 logback.snippet.xml"></a>创建日志配置片段 <code>logback.snippet.xml</code></h5><ul>
+<li>创建 logback.snippet.xml 放在工程的resources目录下</li>
+</ul>
+<h5 id="配置日志片段"><a href="#配置日志片段" class="headerlink" title="配置日志片段"></a>配置日志片段</h5><ul>
+<li>官方文档：<a href="https://logback.qos.ch/manual/configuration.html#fileInclusion" target="_blank" rel="noopener">https://logback.qos.ch/manual/configuration.html#fileInclusion</a></li>
+<li>该配置文件的根元素为 <code>&lt;included&gt;</code></li>
+<li>根元素内部支持 <code>logback.xml</code> 配置文件中的任意元素，例如 <code>&lt;appender&gt;</code> 、<code>&lt;logger&gt;</code> 等</li>
+</ul>
+<h4 id="场景示例"><a href="#场景示例" class="headerlink" title="场景示例"></a>场景示例</h4><ul>
+<li>有个名为 DataPointer 的 Logger，现在用户想要将该 Logger 的日志打印到应用日志目录下的 point 子文件夹中。</li>
+<li>希望将该日志文件名修改为 服务名.point.log ，并且按天以及默认日志大小策略滚动。</li>
+<li><p>日志格式使用启动器的默认格式。</p>
+</li>
+<li><p>logback.snippet.xml 内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;included&gt;</span><br><span class="line"></span><br><span class="line">    &lt;appender name&#x3D;&quot;dataPointAppender&quot; class&#x3D;&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;</span><br><span class="line">        &lt;file&gt;$&#123;logDir&#125;&#x2F;point&#x2F;$&#123;launcher.app.name&#125;.point.log&lt;&#x2F;file&gt;</span><br><span class="line"></span><br><span class="line">        &lt;rollingPolicy class&#x3D;&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy&quot;&gt;</span><br><span class="line">            &lt;!-- rollover daily --&gt;</span><br><span class="line">            &lt;fileNamePattern&gt;$&#123;logDir&#125;&#x2F;point&#x2F;$&#123;launcher.app.name&#125;.%d&#123;yyyy-MM-dd&#125;.%i.point.log&lt;&#x2F;fileNamePattern&gt;</span><br><span class="line">            &lt;maxFileSize&gt;$&#123;maxFileSize&#125;&lt;&#x2F;maxFileSize&gt;</span><br><span class="line">            &lt;maxHistory&gt;$&#123;maxHistory&#125;&lt;&#x2F;maxHistory&gt;</span><br><span class="line">            &lt;totalSizeCap&gt;$&#123;totalSizeCap&#125;&lt;&#x2F;totalSizeCap&gt;</span><br><span class="line">        &lt;&#x2F;rollingPolicy&gt;</span><br><span class="line"></span><br><span class="line">        &lt;encoder class&#x3D;&quot;ch.qos.logback.classic.encoder.PatternLayoutEncoder&quot;&gt;</span><br><span class="line">            &lt;Pattern&gt;$&#123;PATTERN&#125;&lt;&#x2F;Pattern&gt;</span><br><span class="line">        &lt;&#x2F;encoder&gt;</span><br><span class="line">    &lt;&#x2F;appender&gt;</span><br><span class="line"></span><br><span class="line">    &lt;logger name&#x3D;&quot;DataPointer&quot; level&#x3D;&quot;INFO&quot; additivity&#x3D;&quot;false&quot;&gt;</span><br><span class="line">        &lt;appender-ref ref&#x3D;&quot;dataPointAppender&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;logger&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;included&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="日志片段中可以使用的内部变量"><a href="#日志片段中可以使用的内部变量" class="headerlink" title="日志片段中可以使用的内部变量"></a>日志片段中可以使用的内部变量</h4></li>
+<li>launcher.app.name: 服务名</li>
+<li>logDir: 应用日志目录，该目录下有许多子文件夹以存放不同类型的日志文件，例如：<code>biz</code>、<code>gc</code> 等等</li>
+<li>PATTERN: launcher预设的基于统一日志规范的日志格式，通常使用在 <code>appender</code> &gt; <code>encoder</code> &gt; <code>Pattern</code> 元素中</li>
+<li>maxFileSize: 最大文件大小，通常使用在 <code>appender</code> &gt; <code>rollingPolicy</code> &gt; <code>maxFileSize</code> 元素中，默认值：500MB</li>
+<li>maxHistory: 最多保留日志数量，通常使用在 <code>appender</code> &gt; <code>rollingPolicy</code> &gt; <code>maxHistory</code> 元素中，默认值：15</li>
+<li>totalSizeCap: 日志滚动策略的总大小，通常使用在 <code>appender</code> &gt; <code>rollingPolicy</code> &gt; <code>totalSizeCap</code> 元素中，默认值：50GB</li>
+</ul>
+<h3 id="修改日志配置的其它方式"><a href="#修改日志配置的其它方式" class="headerlink" title="修改日志配置的其它方式"></a>修改日志配置的其它方式</h3><h4 id="通过-pom-xml-修改日志相关配置"><a href="#通过-pom-xml-修改日志相关配置" class="headerlink" title="通过 pom.xml 修改日志相关配置"></a>通过 <code>pom.xml</code> 修改日志相关配置</h4><ul>
+<li>示例场景：某个业务的日志文件需要保留30天（默认是15天）</li>
+<li>launcher支持在 <code>pom.xml</code> 中修改部分日志相关配置参数，配置方式如下:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;groupId&gt;org.gy.framework&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;launcher-maven-plugin&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;executions&gt;</span><br><span class="line">        &lt;execution&gt;</span><br><span class="line">            &lt;goals&gt;</span><br><span class="line">                &lt;goal&gt;launcher&lt;&#x2F;goal&gt;</span><br><span class="line">            &lt;&#x2F;goals&gt;</span><br><span class="line">            &lt;configuration&gt;</span><br><span class="line">                &lt;!-- launcher日志相关配置 start --&gt;</span><br><span class="line">                &lt;logConf&gt;</span><br><span class="line">                    &lt;!-- 以数值均为默认值 --&gt;</span><br><span class="line">                    &lt;!-- 日志根级别 --&gt;</span><br><span class="line">                    &lt;rootLogLevel&gt;INFO&lt;&#x2F;rootLogLevel&gt;</span><br><span class="line">                  </span><br><span class="line">                    &lt;!-- 包名为org.gy.framework开头的日志级别 --&gt;</span><br><span class="line">                    &lt;logName&gt;org.gy.framework&lt;&#x2F;logName&gt;</span><br><span class="line">                    &lt;logLevel&gt;INFO&lt;&#x2F;logLevel&gt;</span><br><span class="line">                  </span><br><span class="line">                    &lt;!-- 日志最大文件大小 --&gt;</span><br><span class="line">                    &lt;maxFileSize&gt;500MB&lt;&#x2F;maxFileSize&gt;</span><br><span class="line">                  </span><br><span class="line">                    &lt;!-- 最大文件数量 --&gt;</span><br><span class="line">                    &lt;maxHistory&gt;15&lt;&#x2F;maxHistory&gt;</span><br><span class="line">                  </span><br><span class="line">                    &lt;!-- 日志总大小 --&gt;</span><br><span class="line">                    &lt;totalSizeCap&gt;50GB&lt;&#x2F;totalSizeCap&gt;</span><br><span class="line">                &lt;&#x2F;logConf&gt;</span><br><span class="line">                &lt;!-- launcher日志相关配置 end --&gt;</span><br><span class="line">            &lt;&#x2F;configuration&gt;</span><br><span class="line">        &lt;&#x2F;execution&gt;</span><br><span class="line">    &lt;&#x2F;executions&gt;</span><br><span class="line">&lt;&#x2F;plugin&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="通过JVM参数修改日志相关配置"><a href="#通过JVM参数修改日志相关配置" class="headerlink" title="通过JVM参数修改日志相关配置"></a>通过JVM参数修改日志相关配置</h4><ul>
+<li>示例场景：应用因为某种故障启动不起来，并且应用部署在容器环境无法手动修改配置文件，想打印DEBUG日志但是又不想重新构建镜像。</li>
+</ul>
+<h5 id="使用-Spring-支持的-JVM-参数-logging-level-进行配置（推荐）"><a href="#使用-Spring-支持的-JVM-参数-logging-level-进行配置（推荐）" class="headerlink" title="使用 Spring 支持的 JVM 参数 logging.level 进行配置（推荐）"></a>使用 Spring 支持的 JVM 参数 <code>logging.level</code> 进行配置（推荐）</h5><ul>
+<li>使用 JVM 参数 <code>logging.level.&lt;logger-name&gt;=&lt;level&gt;</code> 进行配置</li>
+<li>示例： ./launcher.sh start -jo ‘-Dlogging.level.org.springframework.web=DEBUG’</li>
+<li>Spring 官方文档： <a href="https://docs.spring.io/spring-boot/docs/2.1.6.RELEASE/reference/html/boot-features-logging.html#boot-features-custom-log-levels" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/2.1.6.RELEASE/reference/html/boot-features-logging.html#boot-features-custom-log-levels</a></li>
+</ul>
+<h5 id="使用-launcher-内建方式配置日志级别（在上述Spring方式不生效时使用此方法进行配置）"><a href="#使用-launcher-内建方式配置日志级别（在上述Spring方式不生效时使用此方法进行配置）" class="headerlink" title="使用 launcher 内建方式配置日志级别（在上述Spring方式不生效时使用此方法进行配置）"></a>使用 launcher 内建方式配置日志级别（在上述Spring方式不生效时使用此方法进行配置）</h5><ul>
+<li>用户可以在启动应用时通过JVM参数修改应用的 <code>rootLogLevel</code> 以及 <code>logLevel</code> 日志级别</li>
+<li>launcher.app.log.name: 自定义 <code>Logger</code>的开头</li>
+<li>launcher.app.log.level: 自定义 <code>Logger</code>的级别</li>
+<li>launcher.app.log.level.root: 其它 <code>Logger</code></li>
+<li>示例： ./launcher.sh start -jo ‘-Dlauncher.app.log.level.root=WARN’</li>
+</ul>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/06/08/Launcher通用启动器-测试用例/" data-toggle="tooltip" data-placement="top" title="Launcher通用启动器-测试用例">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/" data-toggle="tooltip" data-placement="top" title="Launcher通用启动器-Maven插件配置">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                
+<link rel="stylesheet" href="/css/music-player/fonts/iconfont.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/reset.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/player.css">
+
+
+<div class="music-player">
+    <audio class="music-player__audio" ></audio>
+    <div class="music-player__main">
+        <div class="music-player__blur"></div>
+        <div class="music-player__disc">
+            <div class="music-player__image">
+                <img width="100%" src="" alt="">
+            </div>
+            <div class="music-player__pointer"><img width="100%" src="/img/cd_tou.png" alt=""></div>
+        </div>
+        <div class="music-player__controls">
+            <div class="music__info">
+                <h3 class="music__info--title">...</h3>
+                <p class="music__info--singer">...</p>
+            </div>
+            <div class="player-control">
+                <div class="player-control__content">
+                    <div class="player-control__btns">
+                        <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+                        <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i></div>
+                        <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+                        <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i></div>
+                    </div>
+                    <div class="player-control__volume">
+                        <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+                        <div class="control__volume--progress player_progress"></div>
+                    </div>
+                </div>
+                <div class="player-control__content">
+                    <div class="player__song--progress player_progress"></div>
+                    <div class="player__song--timeProgess nowTime">00:00</div>
+                    <div class="player__song--timeProgess totalTime">00:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/music-player/utill.js"></script>
+
+
+<script src="/js/music-player/jquery.min.js"></script>
+
+<!-- netease; qqkg -->
+<!--
+<script src="/js/music-player/player.js?library=config.music.library.js"></script>
+-->
+<script src="../../../../js/music-player/player.js?library=netease&music=https://kg.qq.com/node/play?s=7deFpz7Z26Jmv7di&g_f=share_html"></script>
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#功能简介"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">功能简介</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#日志框架配置方式"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">日志框架配置方式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#不兼容的依赖"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">不兼容的依赖</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#个性化日志"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">个性化日志</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#配置流程"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">配置流程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#创建日志配置片段-logback-snippet-xml"><span class="toc-nav-number">4.1.1.</span> <span class="toc-nav-text">创建日志配置片段 logback.snippet.xml</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#配置日志片段"><span class="toc-nav-number">4.1.2.</span> <span class="toc-nav-text">配置日志片段</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#场景示例"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">场景示例</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#日志片段中可以使用的内部变量"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">日志片段中可以使用的内部变量</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#修改日志配置的其它方式"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">修改日志配置的其它方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#通过-pom-xml-修改日志相关配置"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">通过 pom.xml 修改日志相关配置</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#通过JVM参数修改日志相关配置"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">通过JVM参数修改日志相关配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#使用-Spring-支持的-JVM-参数-logging-level-进行配置（推荐）"><span class="toc-nav-number">5.2.1.</span> <span class="toc-nav-text">使用 Spring 支持的 JVM 参数 logging.level 进行配置（推荐）</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#使用-launcher-内建方式配置日志级别（在上述Spring方式不生效时使用此方法进行配置）"><span class="toc-nav-number">5.2.2.</span> <span class="toc-nav-text">使用 launcher 内建方式配置日志级别（在上述Spring方式不生效时使用此方法进行配置）</span></a></li></ol></li></ol></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#docker" title="docker">docker</a>
+                        
+                          <a class="tag" href="/tags/#maven" title="maven">maven</a>
+                        
+                          <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                        
+                          <a class="tag" href="/tags/#启动器" title="启动器">启动器</a>
+                        
+                          <a class="tag" href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                        
+                          <a class="tag" href="/tags/#plugin" title="plugin">plugin</a>
+                        
+                          <a class="tag" href="/tags/#shell" title="shell">shell</a>
+                        
+                          <a class="tag" href="/tags/#javaagent" title="javaagent">javaagent</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://music.xcloudapi.com" target="_blank">guanyang&#39;s MusicWebsite</a></li>
+                    
+                        <li><a href="https://www.xcloudapi.com" target="_blank">guanyang&#39;s Web</a></li>
+                    
+                        <li><a href="https://github.com/guanyang" target="_blank">guanyang&#39;s Github</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/guanyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/cnyangguan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/cnyangguan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; guanyang 2022 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/guanyang/guanyang.github.io" target="_blank" rel="noopener">
+                        <i>guanyang</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=guanyang&repo=guanyang.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://note.xcloudapi.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🌱&quot;,&quot;just do it&quot;,&quot;🌾&quot;,&quot;🍀&quot;,&quot;don&#39;t give up&quot;,&quot;🍂&quot;,&quot;🌻&quot;,&quot;try it again&quot;,&quot;🍃&quot;,&quot;never say die&quot;,&quot;🌵&quot;,&quot;🌿&quot;,&quot;🌴&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot; ,&quot;rgb(184,90,154)&quot; ,&quot;rgb(157,211,250)&quot; ,&quot;rgb(255,0,0)&quot; ,&quot;rgb(242,153,29)&quot; ,&quot;rgb(23,204,16)&quot; ,&quot;rgb(222,0,0)&quot; ,&quot;rgb(22,36,92)&quot; ,&quot;rgb(127,24,116)&quot; ,&quot;rgb(119,195,79)&quot; ,&quot;rgb(4,77,34)&quot; ,&quot;rgb(122,2,60)&quot;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>
