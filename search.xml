@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>docker网络基础</title>
+      <link href="/2022/06/08/docker%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+      <url>/2022/06/08/docker%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><ul><li>docker安装时便会为我们创建三种网络模式：host、none、bridge</li><li>查看docker网络：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&gt; docker network ls</span><br></pre></td></tr></table></figure></li></ul><h3 id="网络介绍"><a href="#网络介绍" class="headerlink" title="网络介绍"></a>网络介绍</h3><h4 id="host网络"><a href="#host网络" class="headerlink" title="host网络"></a>host网络</h4><ul><li>容器创建时通过<code>--network=host</code>指定使用宿主机网络，此时容器与宿主机共享网络栈，容器内的网络配置和宿主机完全一样。</li></ul><h4 id="none网络"><a href="#none网络" class="headerlink" title="none网络"></a>none网络</h4><ul><li>容器创建时通过<code>--network=none</code>指定容器不创建任何网卡，此时容器里只有lo。</li></ul><h4 id="bridge网络"><a href="#bridge网络" class="headerlink" title="bridge网络"></a>bridge网络</h4><ul><li>容器创建时不指定<code>--network</code>，那么容器默认使用bridge网络。bridge网络是由docker创建的linux bridge — docker0提供。</li><li>由于docker0网桥是安装docker时就默认创建的，我们无法在创建容器的时候指定容器ip，只能由docker0自动分配ip。如果想要创建容器的时候指定ip，需要自己再建一个bridge网络。</li></ul><h3 id="三种网络使用场景"><a href="#三种网络使用场景" class="headerlink" title="三种网络使用场景"></a>三种网络使用场景</h3><h4 id="host网络-1"><a href="#host网络-1" class="headerlink" title="host网络"></a>host网络</h4><ul><li>选用host网络的容器，其网络栈和宿主机一摸一样，它的优势在于网络性能强于其他网络模式。</li><li>如果对网络传输有很大需求可以选用host网络。</li></ul><h4 id="none网络-1"><a href="#none网络-1" class="headerlink" title="none网络"></a>none网络</h4><ul><li>none没有网卡的网络，能做到更加封闭，可以更好的保护重要数据，所以最适合对安全性要求高并且不需要联网的容器。</li></ul><h4 id="bridge网络-1"><a href="#bridge网络-1" class="headerlink" title="bridge网络"></a>bridge网络</h4><ul><li>bridge网络是通过容器上虚拟网络设备和网桥上虚拟网络设备组成一组veth（相当于虚拟的网线）进行连接的，然后通过docker0从172.17.0.0/16分配ip给容器使用。</li><li>显而易见bridge网络适用于日常需要连接网络的容器，例如http容器、web容器…</li></ul><h3 id="link机制"><a href="#link机制" class="headerlink" title="--link机制"></a><code>--link</code>机制</h3><ul><li>可以使新生成的容器链接到已在运行的容器，其原理就是在/etc/hosts里面添加了一个alias的名称<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 格式: --link 容器名:别名</span><br><span class="line">docker run -itd --link&#x3D;ubuntu16_s4:s4 108daf4f6324</span><br></pre></td></tr></table></figure></li><li>使用link选项建立的容器所链接的主机需要在运行状态</li><li>使用link选项建立的容器运行时需要所链接的容器也必须是运行状态</li><li>使用link选项链接的主机ip不需要固定，因为每次新建容器都会检查所链接容器的ip，在/etc/hosts里生成新的alias 名称对应的ip</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> network </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>shell脚本常用参数说明</title>
+      <link href="/2022/06/08/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/"/>
+      <url>/2022/06/08/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/</url>
+      
+        <content type="html"><![CDATA[<h3 id="文件表达式"><a href="#文件表达式" class="headerlink" title="文件表达式"></a>文件表达式</h3><ul><li><p>-e filename 如果 filename存在，则为真</p></li><li><p>-d filename 如果 filename为目录，则为真</p></li><li><p>-f filename 如果 filename为常规文件，则为真</p></li><li><p>-L filename 如果 filename为符号链接，则为真</p></li><li><p>-r filename 如果 filename可读，则为真</p></li><li><p>-w filename 如果 filename可写，则为真</p></li><li><p>-x filename 如果 filename可执行，则为真</p></li><li><p>-s filename 如果文件长度不为0，则为真</p></li><li><p>-h filename 如果文件是软链接，则为真</p></li><li><p>filename1 -nt filename2 如果 filename1比 filename2新，则为真。</p></li><li><p>filename1 -ot filename2 如果 filename1比 filename2旧，则为真。</p></li></ul><h3 id="整数变量表达式"><a href="#整数变量表达式" class="headerlink" title="整数变量表达式"></a>整数变量表达式</h3><ul><li><p>-eq 等于</p></li><li><p>-ne 不等于</p></li><li><p>-gt 大于</p></li><li><p>-ge 大于等于</p></li><li><p>-lt 小于</p></li><li><p>-le 小于等于</p></li></ul><h3 id="字符串变量表达式"><a href="#字符串变量表达式" class="headerlink" title="字符串变量表达式"></a>字符串变量表达式</h3><ul><li><p>if [ $a = $b ] 如果string1等于string2，则为真，字符串允许使用赋值号做等号</p></li><li><p>if [ $string1 != $string2 ] 如果string1不等于string2，则为真</p></li><li><p>if [ -n $string ] 如果string 非空(非0），返回0(true)</p></li><li><p>if [ -z $string ]  如果string 为空，则为真</p></li><li><p>if [ $sting ] 如果string 非空，返回0 (和-n类似)</p></li><li><p>逻辑非 ! 条件表达式的相反</p><ul><li><p>if [ ! 表达式 ]</p></li><li><p>if [ ! -d $num ] 如果不存在目录$num</p></li></ul></li><li><p>逻辑与 –a  条件表达式的并列</p><ul><li>if [ 表达式1 –a 表达式2 ]</li></ul></li><li><p>逻辑或 -o  条件表达式的或</p><ul><li>if [ 表达式1 –o 表达式2 ]</li></ul></li></ul><h3 id="0-的含义"><a href="#0-的含义" class="headerlink" title="$0, $#, $*, $@, $?, $$的含义"></a>$0, $#, $*, $@, $?, $$的含义</h3><ul><li>$0：当前脚本的文件名</li><li>$n：传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。</li><li>$#：传递给脚本或函数的参数个数</li><li>$*：传递给脚本或函数的所有参数</li><li>$@：传递给脚本或函数的所有参数</li><li>$* 和 $@ 的区别：<ul><li>$* 和 $@ 都表示传递给函数或脚本的所有参数，不被双引号(“”)包含时，都以”$1” “2”…”n” 的形式输出所有参数</li><li>当它们被双引号(“”)包含时，”$*”会将所有的参数作为一个整体，以”$1 $2 … n”的形式输出所有参数 ；”@” 会将各个参数分开，以”$1” “2”…”n” 的形式输出所有参数</li></ul></li><li>$?：上个命令的退出状态，或函数的返回值</li><li>$$：当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Alpine Linux教程</title>
+      <link href="/2022/06/08/Alpine-Linux%E6%95%99%E7%A8%8B/"/>
+      <url>/2022/06/08/Alpine-Linux%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Alpine更新国内源"><a href="#Alpine更新国内源" class="headerlink" title="Alpine更新国内源"></a>Alpine更新国内源</h3><h4 id="源文件"><a href="#源文件" class="headerlink" title="源文件"></a>源文件</h4><ul><li>文件名：<code>/etc/apk/repositories</code></li><li>默认的源地址为：<code>https://dl-cdn.alpinelinux.org/</code></li></ul><h4 id="国内源"><a href="#国内源" class="headerlink" title="国内源"></a>国内源</h4><ul><li>注意查看源文件对应的版本，以下版本号需要对应修改</li><li><p>采用国内阿里云的源，文件内容为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;alpine&#x2F;v3.9&#x2F;main&#x2F;</span><br><span class="line">https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;alpine&#x2F;v3.9&#x2F;community&#x2F;</span><br></pre></td></tr></table></figure></li><li><p>如果采用中国科技大学的源，文件内容为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;alpine&#x2F;v3.9&#x2F;main&#x2F;</span><br><span class="line">https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;alpine&#x2F;v3.9&#x2F;community&#x2F;</span><br></pre></td></tr></table></figure></li><li>采用清华源，文件内容为<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;mirror.tuna.tsinghua.edu.cn&#x2F;alpine&#x2F;v3.9&#x2F;main&#x2F;</span><br><span class="line">https:&#x2F;&#x2F;mirror.tuna.tsinghua.edu.cn&#x2F;alpine&#x2F;v3.9&#x2F;community&#x2F;</span><br></pre></td></tr></table></figure></li></ul><h4 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#39;s&#x2F;dl-cdn.alpinelinux.org&#x2F;mirrors.aliyun.com&#x2F;g&#39; &#x2F;etc&#x2F;apk&#x2F;repositories</span><br></pre></td></tr></table></figure><h3 id="软件包管理工具apk使用"><a href="#软件包管理工具apk使用" class="headerlink" title="软件包管理工具apk使用"></a>软件包管理工具apk使用</h3><ul><li>查询软件包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apk search xxx</span><br></pre></td></tr></table></figure></li><li>安装软件包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apk add xxx</span><br></pre></td></tr></table></figure></li><li>删除软件包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apk del xxx</span><br></pre></td></tr></table></figure></li><li>获取更多apk包管理的命令参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apk --help</span><br></pre></td></tr></table></figure></li></ul><h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul><li>官网：<a href="https://www.alpinelinux.org/" target="_blank" rel="noopener">https://www.alpinelinux.org/</a></li><li>Github：<a href="https://github.com/alpinelinux" target="_blank" rel="noopener">https://github.com/alpinelinux</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Alpine </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Launcher通用启动器-测试用例</title>
       <link href="/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/"/>
       <url>/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</url>
