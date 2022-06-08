@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="我们生活在阴沟里，但有人依然仰望星空。">
+    <meta name="keyword"  content="技术, 人生">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          用Serverless搭建个人静态相册网站 - 三叶草的星空
+        
+    </title>
+
+    <link rel="canonical" href="https://note.xcloudapi.com/2022/01/02/用Serverless搭建个人静态相册网站/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Serverless" title="Serverless">Serverless</a>
+                            
+                              <a class="tag" href="/tags/#ThumbsUp" title="ThumbsUp">ThumbsUp</a>
+                            
+                        </div>
+                        <h1>用Serverless搭建个人静态相册网站</h1>
+                        <h2 class="subheading">利用ThumbsUp工具，结合Serverless Framework 的 component 快速搭建个人相册网站，为存储空间减压</h2>
+                        <span class="meta">
+                            Posted by guanyang on
+                            2022-01-02
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">870</span> and
+                                Reading Time <span class="post-count">3</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">三叶草的星空</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/categories/">Categories</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/photography/">Photography</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://music.xcloudapi.com" target="_blank">Music Website</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h3><ul>
+<li>Serverless Framework：Serverless Framework 是业界非常受欢迎的无服务器应用框架，开发者无需关心底层资源即可部署完整可用的 Serverless 应用架构</li>
+<li>ThumbsUp：是一款让使用者方便检索及管理图片的看图软件，不但具有可以快速的操作图片切换预览的使用介面，而且对于图片的简单影像处理也有相当直接、便捷的操作方式</li>
+</ul>
+<h3 id="安装与初始化"><a href="#安装与初始化" class="headerlink" title="安装与初始化"></a>安装与初始化</h3><h4 id="首先确保系统包含以下环境："><a href="#首先确保系统包含以下环境：" class="headerlink" title="首先确保系统包含以下环境："></a>首先确保系统包含以下环境：</h4><ul>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a> (Node.js 版本需不低于 8.6，建议使用 Node.js 10.0 及以上版本)</li>
+<li><a href="https://exiftool.org/" target="_blank" rel="noopener">Exiftool</a></li>
+<li><a href="http://www.graphicsmagick.org/" target="_blank" rel="noopener">图形 Magick</a><blockquote>
+<p>如未安装上述应用程序，可以参考<a href="https://thumbsup.github.io/docs/2-installation/npm/" target="_blank" rel="noopener">安装说明</a></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="安装-Serverless-Framework"><a href="#安装-Serverless-Framework" class="headerlink" title="安装 Serverless Framework"></a>安装 Serverless Framework</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g serverless</span><br></pre></td></tr></table></figure>
+<h4 id="安装-ThumbsUp"><a href="#安装-ThumbsUp" class="headerlink" title="安装 ThumbsUp"></a>安装 ThumbsUp</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g thumbsup</span><br></pre></td></tr></table></figure>
+<h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir photos</span><br><span class="line">$ thumbsup --input .\photos\ --output website</span><br></pre></td></tr></table></figure>
+<ul>
+<li>初始化成功后，可以看到项目目录结构：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── photos</span><br><span class="line">└── website</span><br><span class="line">    └── index.html</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="配置-yml-文件【可选】"><a href="#配置-yml-文件【可选】" class="headerlink" title="配置 yml 文件【可选】"></a>配置 yml 文件【可选】</h3><ul>
+<li>配置serverless.yml需要云服务资源支持，需要收费，作为可选项</li>
+<li>项目目录下，创建 serverless.yml 文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch serverless.yml</span><br></pre></td></tr></table></figure></li>
+<li>将以下内容写入上述的 yml 文件里：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># serverless.yml</span><br><span class="line"></span><br><span class="line">myWebsite:</span><br><span class="line">  component: &quot;@serverless&#x2F;tencent-website&quot;</span><br><span class="line">  inputs:</span><br><span class="line">    code:</span><br><span class="line">      src: .&#x2F;website</span><br><span class="line">      index: index.html</span><br><span class="line">      error: index.html</span><br><span class="line">    region: ap-guangzhou</span><br><span class="line">    bucketName: my-bucket-1111</span><br></pre></td></tr></table></figure></li>
+<li>配置完成后，文件目录如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── photos</span><br><span class="line">├── website</span><br><span class="line">|   └── index.html</span><br><span class="line">└── serverless.yml</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><ul>
+<li>部署有如下两种方式：<ul>
+<li>一种通过serverless.yml部署，需要云服务资源支持，需要收费</li>
+<li>通过自己的域名直接解析到上述<code>website</code>目录即可，自行上网搜索处理即可</li>
+</ul>
+</li>
+</ul>
+<h4 id="serverless-yml部署介绍"><a href="#serverless-yml部署介绍" class="headerlink" title="serverless.yml部署介绍"></a>serverless.yml部署介绍</h4><ul>
+<li>通过 sls 命令进行部署，并可以添加 —debug 参数查看部署过程中的信息</li>
+<li>如您的账号未登陆或<a href="https://cloud.tencent.com/register" target="_blank" rel="noopener">注册</a>腾讯云，您可以直接通过微信扫描命令行中的二维码进行授权登陆和注册</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">sls --debug</span><br><span class="line"></span><br><span class="line">  DEBUG ─ Resolving the template&#39;s static variables.</span><br><span class="line">  DEBUG ─ Collecting components from the template.</span><br><span class="line">  DEBUG ─ Downloading any NPM components found in the template.</span><br><span class="line">  DEBUG ─ Analyzing the template&#39;s components dependencies.</span><br><span class="line">  DEBUG ─ Creating the template&#39;s components graph.</span><br><span class="line">  DEBUG ─ Syncing template state.</span><br><span class="line">  DEBUG ─ Executing the template&#39;s components graph.</span><br><span class="line">  DEBUG ─ Starting Website Component.</span><br><span class="line">  DEBUG ─ Preparing website Tencent COS bucket my-bucket-thumbsup-1256386184.</span><br><span class="line">  DEBUG ─ Deploying &quot;my-bucket-thumbsup-1256386184&quot; bucket in the &quot;ap-guangzhou&quot; region.</span><br><span class="line">  DEBUG ─ &quot;my-bucket-thumbsup-1256386184&quot; bucket was successfully deployed to the &quot;ap-guangzhou&quot; region.</span><br><span class="line">  DEBUG ─ Setting ACL for &quot;my-bucket-thumbsup-1256386184&quot; bucket in the &quot;ap-guangzhou&quot; region.</span><br><span class="line">  DEBUG ─ Ensuring no CORS are set for &quot;my-bucket-thumbsup-1256386184&quot; bucket in the &quot;ap-guangzhou&quot; region.</span><br><span class="line">  DEBUG ─ Ensuring no Tags are set for &quot;my-bucket-thumbsup-1256386184&quot; bucket in the &quot;ap-guangzhou&quot; region.</span><br><span class="line">  DEBUG ─ Configuring bucket my-bucket-thumbsup-1256386184 for website hosting.</span><br><span class="line">  DEBUG ─ Uploading website files from D:\tencent-serverless\thumbsup\website to bucket my-bucket-thumbsup-1256386184.</span><br><span class="line">  DEBUG ─ Starting upload to bucket my-bucket-thumbsup-1256386184 in region ap-guangzhou</span><br><span class="line">  DEBUG ─ Uploading directory D:\tencent-serverless\thumbsup\website to bucket my-bucket-thumbsup-1256386184</span><br><span class="line">  DEBUG ─ Website deployed successfully to URL: http:&#x2F;&#x2F;my-bucket-thumbsup-1256386184.cos-website.ap-guangzhou.myqcloud.com.</span><br><span class="line"></span><br><span class="line">  myWebsite:</span><br><span class="line">    url: http:&#x2F;&#x2F;my-bucket-thumbsup-1256386184.cos-website.ap-guangzhou.myqcloud.com</span><br><span class="line">    env:</span><br><span class="line"></span><br><span class="line">  13s » myWebsite » done</span><br></pre></td></tr></table></figure>
+<ul>
+<li>访问命令行输出的 website url，即可查看即可查看使用 Serverless Framework 部署的照片墙网站</li>
+</ul>
+<blockquote>
+<p>注：如果希望更新网站中的照片或者视频等文件，可以在 photos 文件夹更新照片后，在本地重新运行 thumbsup —input .\photos\ —output website 更新本地页面，再运行 sls 即可更新网站</p>
+</blockquote>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>本文使用了非常流行的无服务器框架 Serverless Framework来搭建照片墙网站，更多产品信息可以点击进入官网学习。</p>
+<blockquote>
+<p>传送门：</p>
+<ul>
+<li>GitHub: <a href="https://github.com/serverless/serverless/blob/master/README_CN.md" target="_blank" rel="noopener">github.com/serverless</a></li>
+<li>官网：<a href="https://cn.serverless.com/" target="_blank" rel="noopener">serverless.com</a></li>
+</ul>
+</blockquote>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/01/21/Apache-Geode使用教程/" data-toggle="tooltip" data-placement="top" title="Apache Geode使用教程">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2021/11/22/Maven-Archetype搭建模板工程/" data-toggle="tooltip" data-placement="top" title="Maven Archetype搭建模板工程">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                
+<link rel="stylesheet" href="/css/music-player/fonts/iconfont.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/reset.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/player.css">
+
+
+<div class="music-player">
+    <audio class="music-player__audio" ></audio>
+    <div class="music-player__main">
+        <div class="music-player__blur"></div>
+        <div class="music-player__disc">
+            <div class="music-player__image">
+                <img width="100%" src="" alt="">
+            </div>
+            <div class="music-player__pointer"><img width="100%" src="/img/cd_tou.png" alt=""></div>
+        </div>
+        <div class="music-player__controls">
+            <div class="music__info">
+                <h3 class="music__info--title">...</h3>
+                <p class="music__info--singer">...</p>
+            </div>
+            <div class="player-control">
+                <div class="player-control__content">
+                    <div class="player-control__btns">
+                        <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+                        <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i></div>
+                        <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+                        <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i></div>
+                    </div>
+                    <div class="player-control__volume">
+                        <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+                        <div class="control__volume--progress player_progress"></div>
+                    </div>
+                </div>
+                <div class="player-control__content">
+                    <div class="player__song--progress player_progress"></div>
+                    <div class="player__song--timeProgess nowTime">00:00</div>
+                    <div class="player__song--timeProgess totalTime">00:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/music-player/utill.js"></script>
+
+
+<script src="/js/music-player/jquery.min.js"></script>
+
+<!-- netease; qqkg -->
+<!--
+<script src="/js/music-player/player.js?library=config.music.library.js"></script>
+-->
+<script src="../../../../js/music-player/player.js?library=netease&music=https://kg.qq.com/node/play?s=7deFpz7Z26Jmv7di&g_f=share_html"></script>
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#工具介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">工具介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安装与初始化"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">安装与初始化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#首先确保系统包含以下环境："><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">首先确保系统包含以下环境：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#安装-Serverless-Framework"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">安装 Serverless Framework</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#安装-ThumbsUp"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">安装 ThumbsUp</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#初始化项目"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">初始化项目</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#配置-yml-文件【可选】"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">配置 yml 文件【可选】</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#部署"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">部署</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#serverless-yml部署介绍"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">serverless.yml部署介绍</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#小结"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">小结</span></a></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Serverless" title="Serverless">Serverless</a>
+                        
+                          <a class="tag" href="/tags/#ThumbsUp" title="ThumbsUp">ThumbsUp</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://music.xcloudapi.com" target="_blank">guanyang&#39;s MusicWebsite</a></li>
+                    
+                        <li><a href="https://www.xcloudapi.com" target="_blank">guanyang&#39;s Web</a></li>
+                    
+                        <li><a href="https://github.com/guanyang" target="_blank">guanyang&#39;s Github</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/guanyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/cnyangguan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/cnyangguan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; guanyang 2022 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/guanyang/guanyang.github.io" target="_blank" rel="noopener">
+                        <i>guanyang</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=guanyang&repo=guanyang.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://note.xcloudapi.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🌱&quot;,&quot;just do it&quot;,&quot;🌾&quot;,&quot;🍀&quot;,&quot;don&#39;t give up&quot;,&quot;🍂&quot;,&quot;🌻&quot;,&quot;try it again&quot;,&quot;🍃&quot;,&quot;never say die&quot;,&quot;🌵&quot;,&quot;🌿&quot;,&quot;🌴&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot; ,&quot;rgb(184,90,154)&quot; ,&quot;rgb(157,211,250)&quot; ,&quot;rgb(255,0,0)&quot; ,&quot;rgb(242,153,29)&quot; ,&quot;rgb(23,204,16)&quot; ,&quot;rgb(222,0,0)&quot; ,&quot;rgb(22,36,92)&quot; ,&quot;rgb(127,24,116)&quot; ,&quot;rgb(119,195,79)&quot; ,&quot;rgb(4,77,34)&quot; ,&quot;rgb(122,2,60)&quot;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>
