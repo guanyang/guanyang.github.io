@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://note.xcloudapi.com/2022/06/08/Launcher%25E9%2580%259A%25E7%2594%25A8%25E5%2590%25AF%25E5%258A%25A8%25E5%2599%25A8/</loc>
+    
+    <lastmod>2022-06-08T08:28:42.786Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://note.xcloudapi.com/2022/06/08/Launcher%25E9%2580%259A%25E7%2594%25A8%25E5%2590%25AF%25E5%258A%25A8%25E5%2599%25A8-Dockerfile%25E6%2589%25A9%25E5%25B1%2595%25E6%2594%25AF%25E6%258C%2581/</loc>
     
     <lastmod>2022-06-08T08:10:52.133Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://note.xcloudapi.com/2022/06/08/Launcher%25E9%2580%259A%25E7%2594%25A8%25E5%2590%25AF%25E5%258A%25A8%25E5%2599%25A8-%25E4%25BD%25BF%25E7%2594%25A8%25E8%25AF%25B4%25E6%2598%258E/</loc>
     
     <lastmod>2022-06-08T07:49:14.528Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://note.xcloudapi.com/2022/06/08/Launcher%25E9%2580%259A%25E7%2594%25A8%25E5%2590%25AF%25E5%258A%25A8%25E5%2599%25A8/</loc>
-    
-    <lastmod>2022-06-08T07:46:24.911Z</lastmod>
     
   </url>
   
