@@ -4,6 +4,89 @@
   
     
     <entry>
+      <title>Java并发容器及使用场景</title>
+      <link href="/2022/08/03/Java%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
+      <url>/2022/08/03/Java%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul><li>Java集合容器，主要有四大类别：<code>List</code> <code>Set</code> <code>Queue</code> <code>Map</code>，常见的<code>ArrayList</code> <code>HashMap</code>这些都不是线程安全的</li><li><strong>同步容器</strong>：简单理解为通过<code>synchronized</code>来实现同步的容器，比如<code>Vector</code>、<code>Hashtable</code>以及<code>SynchronizedList</code>等容器</li><li>同步容器由于共同竞争容器级别的锁，虽然解决了线程安全问题，但是整体吞吐量降低</li></ul><h2 id="并发容器设计思路"><a href="#并发容器设计思路" class="headerlink" title="并发容器设计思路"></a>并发容器设计思路</h2><ul><li>针对多线程并发设计，使用了锁分段技术，只对操作的位置进行同步操作，减小锁的粒度，从而提高吞吐量</li><li>采用CAS算法和部分代码使用<code>synchronized</code>锁保证线程安全</li></ul><h2 id="并发容器分类"><a href="#并发容器分类" class="headerlink" title="并发容器分类"></a>并发容器分类</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><ul><li>CopyOnWriteArrayList<ul><li>目标：代替Vector、synchronizedList</li><li>原理：利用高并发往往是读多写少的特性，对读操作不加锁，对写操作，先复制一份新的集合，在新的集合上面修改，然后将新集合赋值给旧的引用，并通过volatile 保证其可见性，当然写操作的锁是必不可少的了。</li></ul></li></ul><h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><ul><li>ConcurrentHashMap<ul><li>目标：代替Hashtable、synchronizedMap，支持复合操作</li><li>原理：JDK6中采用一种更加细粒度的加锁机制Segment“分段锁”，JDK8中采用CAS无锁算法。</li></ul></li><li>ConcurrentSkipListMap<ul><li>目标：代替synchronizedSortedMap(TreeMap)</li><li>原理：Skip list（跳表）是一种可以代替平衡树的数据结构，默认是按照Key值升序的。</li></ul></li></ul><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><ul><li>ConcurrentSkipListSet<ul><li>目标：代替synchronizedSortedSet</li><li>原理：内部基于ConcurrentSkipListMap实现</li></ul></li><li>CopyOnWriteArraySet<ul><li>目标：代替synchronizedSet</li><li>原理：基于CopyOnWriteArrayList实现，其唯一的不同是在add时调用的是CopyOnWriteArrayList的addIfAbsent方法，其遍历当前Object数组，如Object数组中已有了当前元素，则直接返回，如果没有则放入Object数组的尾部，并返回。</li></ul></li></ul><h3 id="BlockingQueue"><a href="#BlockingQueue" class="headerlink" title="BlockingQueue"></a>BlockingQueue</h3><ul><li>ArrayBlockingQueue<ul><li>基于数组实现的阻塞FIFO队列</li><li>通过ReentrantLock实现线程安全，由<code>notEmpty</code>、<code>notFull</code>两个Condition实现阻塞和唤醒</li></ul></li><li>LinkedBlockingQueue<ul><li>基于链表实现的阻塞FIFO队列</li><li>通过ReentrantLock实现线程安全，通过Condition实现阻塞和唤醒，由<code>takeLock</code>、<code>putLock</code>两把锁保证并发安全</li></ul></li><li>SynchronousQueue<ul><li>同步队列，可用于线程间交换数据却不用存储数据</li><li>队列支持公平和非公平的模式，公平模式的数据结构是队列（FIFO），非公平模式使用的是栈（LIFO）</li></ul></li><li>LinkedTransferQueue<ul><li>基于链表实现的无界阻塞队列</li><li>相当于<code>LinkedBlockingQueue</code>和<code>SynchronousQueue</code>的合体，性能比<code>LinkedBlockingQueue</code>更高，比<code>SynchronousQueue</code>能存储更多的元素</li><li>当<code>put</code>时，如果有等待的线程，就直接将元素 “交给” 等待者， 否则直接进入队列</li><li><code>put</code>和<code>transfer</code>方法的区别是，<code>put</code>是立即返回的，<code>transfer</code>是阻塞等待消费者拿到数据才返回。</li></ul></li><li>PriorityBlockingQueue<ul><li>基于数组实现的支持优先级的无界阻塞队列，底层是基于二叉小顶堆实现</li><li>通过ReentrantLock实现线程安全，通过Condition实现阻塞和唤醒</li></ul></li><li>DelayQueue<ul><li>支持延时获取元素的无界阻塞队列，内部使用<code>PriorityQueue</code>来实现</li><li>进入队列的元素必须实现<code>Delayed</code>接口，在创建元素时可以指定多久才能从队列中获取当前元素，只有在延迟期满时才能从中提取元素</li></ul></li></ul><h3 id="BlockingDeque"><a href="#BlockingDeque" class="headerlink" title="BlockingDeque"></a>BlockingDeque</h3><ul><li>LinkedBlockingDeque<ul><li>基于双向链表实现的阻塞FIFO或FILO队列</li><li>通过ReentrantLock实现线程安全，通过Condition实现阻塞和唤醒</li></ul></li></ul><h3 id="ConcurrentLinkedQueue"><a href="#ConcurrentLinkedQueue" class="headerlink" title="ConcurrentLinkedQueue"></a>ConcurrentLinkedQueue</h3><ul><li>并发中的非阻塞队列，采用CAS非阻塞算法实现线程安全</li><li>基于链表实现的FIFO队列（LinkedList的并发版本）</li><li>由于使用CAS没有使用锁，所以获取size的时候有可能进行offer，poll或者remove操作，导致获取的元素个数不精确，所以在并发情况下size函数不是很有用。</li></ul><h3 id="ConcurrentLinkedDeque"><a href="#ConcurrentLinkedDeque" class="headerlink" title="ConcurrentLinkedDeque"></a>ConcurrentLinkedDeque</h3><ul><li>并发中的非阻塞队列，采用CAS非阻塞算法实现线程安全</li><li>基于双向链表实现的FIFO或FILO队列</li><li>由于使用CAS没有使用锁，所以获取size的时候有可能进行offer，poll或者remove操作，导致获取的元素个数不精确，所以在并发情况下size函数不是很有用。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 多线程 </tag>
+            
+            <tag> 高并发 </tag>
+            
+            <tag> 并发容器 </tag>
+            
+            <tag> 同步容器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>AQS原理及实战</title>
+      <link href="/2022/08/03/AQS%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E6%88%98/"/>
+      <url>/2022/08/03/AQS%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E6%88%98/</url>
+      
+        <content type="html"><![CDATA[<h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><ul><li>Java中的大部分同步类（Lock、Semaphore、ReentrantLock等）都是基于AbstractQueuedSynchronizer（简称为AQS）实现的。</li><li>AQS是一种提供了原子式管理同步状态、阻塞和唤醒线程功能以及CLH队列模型的简单框架。</li><li>AQS同时提供了互斥模式（exclusive）和共享模式（shared）两种不同的同步逻辑。</li><li>基于AQS同步器实现参考：<ul><li>ReentrantLock</li><li>ReentrantReadWriteLock</li><li>Semaphore</li><li>CountDownLatch</li><li>ThreadPoolExecutor.Worker</li></ul></li></ul><h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><ul><li>共享资源（state）变量是<code>volatile int</code>类型，保证可见性</li><li>基于CLH队列锁模型实现线程阻塞等待及唤醒机制，如图所示：</li></ul><p><img src="../../../../img/note/AQS-CLH.png" alt="CLH队列"></p><ul><li><strong>Sync queue</strong>: 同步队列是一个双向列表，包括head节点和tail节点</li></ul><p><img src="../../../../img/note/AQS-sync_queue.png" alt="Sync queue"></p><ul><li><strong>Condition queue</strong>: 非必须，单向列表，当程序中存在<code>condition</code>的时候才会存在此列表</li></ul><p><img src="../../../../img/note/AQS-condition_queue.png" alt="Condition queue"></p><h3 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h3><ul><li>AQS使用一个int成员变量来表示同步状态</li><li>使用Node实现FIFO队列，可以用于构建锁或者其他同步装置</li><li>AQS资源共享方式：独占Exclusive（排它锁模式）和共享Share（共享锁模式）</li></ul><h3 id="state状态"><a href="#state状态" class="headerlink" title="state状态"></a>state状态</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表示该线程节点已释放（超时、中断），已取消的节点不会再阻塞</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CANCELLED =  <span class="number">1</span>;</span><br><span class="line"><span class="comment">//表示该线程的后续线程需要阻塞，即只要前置节点释放锁，就会通知标识为 SIGNAL 状态的后续节点的线程</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SIGNAL    = -<span class="number">1</span>;</span><br><span class="line"><span class="comment">//表示该线程在condition队列中阻塞（Condition有使用）</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CONDITION = -<span class="number">2</span>;</span><br><span class="line"><span class="comment">//表示该线程以及后续线程进行无条件传播（CountDownLatch中有使用）共享模式下</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PROPAGATE = -<span class="number">3</span>;</span><br></pre></td></tr></table></figure><h3 id="自定义同步器实现"><a href="#自定义同步器实现" class="headerlink" title="自定义同步器实现"></a>自定义同步器实现</h3><blockquote><p>自定义同步器在实现时只需要实现共享资源state的获取与释放方式即可，主要实现以下几种方法：</p></blockquote><ul><li>isHeldExclusively()：该线程是否正在独占资源。只有用到condition才需要去实现它。</li><li>tryAcquire(int)：独占方式。尝试获取资源，成功则返回true，失败则返回false。</li><li>tryRelease(int)：独占方式。尝试释放资源，成功则返回true，失败则返回false。</li><li>tryAcquireShared(int)：共享方式。尝试获取资源。负数表示失败；0表示成功，但没有剩余可用资源；正数表示成功，且有剩余资源。</li><li>tryReleaseShared(int)：共享方式。尝试释放资源，如果释放后允许唤醒后续等待结点返回true，否则返回false。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 多线程 </tag>
+            
+            <tag> 高并发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LockSupport实战</title>
+      <link href="/2022/08/03/LockSupport%E5%AE%9E%E6%88%98/"/>
+      <url>/2022/08/03/LockSupport%E5%AE%9E%E6%88%98/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><ul><li><code>LockSupport</code>类可以阻塞当前线程以及唤醒指定被阻塞的线程。</li><li>主要是通过<code>park()</code>和<code>unpark(thread)</code>方法来实现阻塞和唤醒线程的操作的。</li></ul><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul><li>每个线程都有一个许可(permit)，permit只有两个值1和0，默认是0。</li><li>当调用unpark(thread)方法，就会将thread线程的许可permit设置成1(注意多次调用unpark方法，不会累加，permit值还是1)。</li><li>当调用park()方法，如果当前线程的permit是1，那么将permit设置为0，并立即返回。如果当前线程的permit是0，那么当前线程就会阻塞，直到别的线程将当前线程的permit设置为1.park方法会将permit再次设置为0，并返回。</li></ul><blockquote><p>注意：因为permit默认是0，所以一开始调用park()方法，线程必定会被阻塞。调用unpark(thread)方法后，会自动唤醒thread线程，即park方法立即返回。</p></blockquote><h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">park</span><span class="params">(Object blocker)</span></span>; <span class="comment">// 暂停当前线程</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">parkNanos</span><span class="params">(Object blocker, <span class="keyword">long</span> nanos)</span></span>; <span class="comment">// 暂停当前线程，不过有超时时间的限制</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">parkUntil</span><span class="params">(Object blocker, <span class="keyword">long</span> deadline)</span></span>; <span class="comment">// 暂停当前线程，直到某个时间</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">park</span><span class="params">()</span></span>; <span class="comment">// 无期限暂停当前线程</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">parkNanos</span><span class="params">(<span class="keyword">long</span> nanos)</span></span>; <span class="comment">// 暂停当前线程，不过有超时时间的限制</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">parkUntil</span><span class="params">(<span class="keyword">long</span> deadline)</span></span>; <span class="comment">// 暂停当前线程，直到某个时间</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">unpark</span><span class="params">(Thread thread)</span></span>; <span class="comment">// 恢复当前线程</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBlocker</span><span class="params">(Thread t)</span></span>; <span class="comment">//阻塞的对象，方便线程dump时查看具体信息</span></span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li><code>LockSupport</code>不需要在同步代码块里，区别于<code>wait</code>和<code>notify</code>，所以线程间也不需要维护一个共享的同步对象了，实现了线程间的解耦。</li><li><code>unpark</code>函数可以先于park调用，所以不需要担心线程间的执行的先后顺序。</li><li>因为中断的时候<code>park</code>不会抛出<code>InterruptedException</code>异常，所以需要在park之后自行判断中断状态，然后做额外的处理。</li><li><code>blocker</code>的作用是在dump线程的时候看到阻塞对象的信息</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 多线程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>高性能队列-Disruptor</title>
       <link href="/2022/06/20/%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97-Disruptor/"/>
       <url>/2022/06/20/%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97-Disruptor/</url>

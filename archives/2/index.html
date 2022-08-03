@@ -309,9 +309,190 @@
 
     
 
+    
+
+    
+
+    
+
 
 
 <!-- Main Content -->
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
+                <h2 class="post-title">
+                    Launcher通用启动器-Dockerfile扩展支持
+                </h2>
+                <h3 class="post-subtitle">
+                    提供了Dockerfile生成功能，支持定制化基础运行环境
+                </h3>
+                <div class="post-content-preview">
+                    概览
+launcher提供了Dockerfile生成功能，支持定制化基础运行环境
+用户可以在launcher-maven-plugin的 pom 配置中对 Dockerfile 进行修改，从而支持对业务基础环境的定制化
+进行 mvn package 之后，Dockerfile会生成在${project_module}/target/Dockerfile
+
+Dockerfile扩展点配置
+&l......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2022-06-08
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                      <a href="/tags/#maven" title="maven">maven</a>
+                    
+                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                    
+                      <a href="/tags/#启动器" title="启动器">启动器</a>
+                    
+                      <a href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                    
+                      <a href="/tags/#plugin" title="plugin">plugin</a>
+                    
+                      <a href="/tags/#shell" title="shell">shell</a>
+                    
+                      <a href="/tags/#javaagent" title="javaagent">javaagent</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                <h2 class="post-title">
+                    Launcher通用启动器-使用说明
+                </h2>
+                <h3 class="post-subtitle">
+                    启动器脚本及参数使用说明
+                </h3>
+                <div class="post-content-preview">
+                    查看帮助使用 -h 或者 --help 参数可以查看启动器以及每个命令的使用说明和用法
+
+launcher.sh -h
+launcher.sh [start/stop/restart/status]-h
+
+关于应用启动参数配置应用启动参数有3种指定方式
+通过参数指定
+
+
+
+短参数
+长参数
+通过系统变量、环境变量（见表格下方备注）
+说明
+示例
+
+
+
+
+-a
+—args
+
+设置应用参数
+-a s......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2022-06-08
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                      <a href="/tags/#maven" title="maven">maven</a>
+                    
+                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                    
+                      <a href="/tags/#启动器" title="启动器">启动器</a>
+                    
+                      <a href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                    
+                      <a href="/tags/#plugin" title="plugin">plugin</a>
+                    
+                      <a href="/tags/#shell" title="shell">shell</a>
+                    
+                      <a href="/tags/#javaagent" title="javaagent">javaagent</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2022/06/08/Launcher通用启动器/">
+                <h2 class="post-title">
+                    Launcher通用启动器
+                </h2>
+                <h3 class="post-subtitle">
+                    launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
+                </h3>
+                <div class="post-content-preview">
+                    概览
+launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数。
+用户可以通过Maven插件的方式引入launcher，通过一些简单的配置即可将Java通过launcher启动起来。
+
+源码说明
+Github源码：https://github.com/guanyang/spring-simple-framework
+
+快速接入
+launcher的新......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by guanyang on
+                    2022-06-08
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#docker" title="docker">docker</a>
+                    
+                      <a href="/tags/#maven" title="maven">maven</a>
+                    
+                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+                    
+                      <a href="/tags/#启动器" title="启动器">启动器</a>
+                    
+                      <a href="/tags/#dockerfile" title="dockerfile">dockerfile</a>
+                    
+                      <a href="/tags/#plugin" title="plugin">plugin</a>
+                    
+                      <a href="/tags/#shell" title="shell">shell</a>
+                    
+                      <a href="/tags/#javaagent" title="javaagent">javaagent</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
 
     
 
@@ -638,140 +819,6 @@ Github源码：https://github.com/guanyang......
 
     
 
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/06/08/Spring工具包-csrf/">
-                <h2 class="post-title">
-                    Spring工具包-csrf
-                </h2>
-                <h3 class="post-subtitle">
-                    Spring工具包安全组件，支持csrf防护
-                </h3>
-                <div class="post-content-preview">
-                    概览
-csrf防护组件，支持referer验证、双重cookie验证，支持多种验证方式
-
-使用指南
-Github源码：https://github.com/guanyang/spring-base-parent
-最新Maven坐标
-
-12345&lt;dependency&gt;    &lt;groupId&gt;org.gy.framework&lt;&#x2F;groupId&gt; ......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by guanyang on
-                    2022-06-08
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                    
-                      <a href="/tags/#Spring" title="Spring">Spring</a>
-                    
-                      <a href="/tags/#csrf" title="csrf">csrf</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/06/08/Spring工具包-core/">
-                <h2 class="post-title">
-                    Spring工具包-core
-                </h2>
-                <h3 class="post-subtitle">
-                    Spring工具包核心，定义基础DTO、异常及错误码
-                </h3>
-                <div class="post-content-preview">
-                    概览
-定义DTO，规范输入输出格式，参考Response
-定义错误码、异常，参考CommonException
-定义事件接口契约，参考EventI
-添加Filter和FilterChain支持，方便自由定制
-定义TraceId生成工具，参考TraceUtils
-添加StateMachine状态机，支持Fluent API调用
-定义枚举类标准，统一格式，参考IStdEnum
-
-使用指南
-Git......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by guanyang on
-                    2022-06-08
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                    
-                      <a href="/tags/#Spring" title="Spring">Spring</a>
-                    
-                      <a href="/tags/#Exception" title="Exception">Exception</a>
-                    
-                      <a href="/tags/#Filter" title="Filter">Filter</a>
-                    
-                      <a href="/tags/#StateMachine" title="StateMachine">StateMachine</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
-            <a href="/2022/06/08/Spring工具包概述/">
-                <h2 class="post-title">
-                    Spring工具包概述
-                </h2>
-                <h3 class="post-subtitle">
-                    制定Java工程基础工具包规范，避免重复造轮子，提升效率，统一的父pom、三方依赖库及版本管理
-                </h3>
-                <div class="post-content-preview">
-                    概览
-依赖规范，统一的父pom，三方依赖库、版本管理
-常用组件、工具类封装，方便代码复用
-常用Starter组件，开箱即用，提升效率
-
-使用指南
-Github源码：https://github.com/guanyang/spring-base-parent
-最新Maven坐标12345&lt;dependency&gt;  &lt;groupId&gt;org.gy.framework&lt......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by guanyang on
-                    2022-06-08
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                    
-                      <a href="/tags/#Spring" title="Spring">Spring</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
 
 
 <!-- Pager -->
@@ -938,6 +985,18 @@ Github源码：https://github.com/guanyang/spring-base-parent
         
             
         
+            
+            <a href="/tags/#多线程" title="多线程" rel="3">多线程</a>
+            
+        
+            
+            <a href="/tags/#高并发" title="高并发" rel="2">高并发</a>
+            
+        
+            
+        
+            
+        
     </div>
 </section>
 
@@ -1025,23 +1084,23 @@ Github源码：https://github.com/guanyang/spring-base-parent
     <ul>
       
         <li>
+          <a href="/2022/08/03/Java%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/">Java并发容器及使用场景</a>
+        </li>
+      
+        <li>
+          <a href="/2022/08/03/AQS%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E6%88%98/">AQS原理及实战</a>
+        </li>
+      
+        <li>
+          <a href="/2022/08/03/LockSupport%E5%AE%9E%E6%88%98/">LockSupport实战</a>
+        </li>
+      
+        <li>
           <a href="/2022/06/20/%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97-Disruptor/">高性能队列-Disruptor</a>
         </li>
       
         <li>
           <a href="/2022/06/08/docker%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">docker网络基础</a>
-        </li>
-      
-        <li>
-          <a href="/2022/06/08/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/">shell脚本常用参数说明</a>
-        </li>
-      
-        <li>
-          <a href="/2022/06/08/Alpine-Linux%E6%95%99%E7%A8%8B/">Alpine Linux教程</a>
-        </li>
-      
-        <li>
-          <a href="/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/">Launcher通用启动器-测试用例</a>
         </li>
       
     </ul>
@@ -1068,7 +1127,7 @@ Github源码：https://github.com/guanyang/spring-base-parent
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">5</span></li></ul>
     </div>
 
         <hr>
@@ -1282,7 +1341,7 @@ Github源码：https://github.com/guanyang/spring-base-parent
         
 
         
-            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🌱&quot;,&quot;just do it&quot;,&quot;🌾&quot;,&quot;🍀&quot;,&quot;don&#39;t give up&quot;,&quot;🍂&quot;,&quot;🌻&quot;,&quot;try it again&quot;,&quot;🍃&quot;,&quot;never say die&quot;,&quot;🌵&quot;,&quot;🌿&quot;,&quot;🌴&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot; ,&quot;rgb(184,90,154)&quot; ,&quot;rgb(157,211,250)&quot; ,&quot;rgb(255,0,0)&quot; ,&quot;rgb(242,153,29)&quot; ,&quot;rgb(23,204,16)&quot; ,&quot;rgb(222,0,0)&quot; ,&quot;rgb(22,36,92)&quot; ,&quot;rgb(127,24,116)&quot; ,&quot;rgb(119,195,79)&quot; ,&quot;rgb(4,77,34)&quot; ,&quot;rgb(122,2,60)&quot;]'></script>
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;🌱&#34;,&#34;just do it&#34;,&#34;🌾&#34;,&#34;🍀&#34;,&#34;don&#39;t give up&#34;,&#34;🍂&#34;,&#34;🌻&#34;,&#34;try it again&#34;,&#34;🍃&#34;,&#34;never say die&#34;,&#34;🌵&#34;,&#34;🌿&#34;,&#34;🌴&#34;]' color='[&#34;rgb(121,93,179)&#34; ,&#34;rgb(76,180,231)&#34; ,&#34;rgb(184,90,154)&#34; ,&#34;rgb(157,211,250)&#34; ,&#34;rgb(255,0,0)&#34; ,&#34;rgb(242,153,29)&#34; ,&#34;rgb(23,204,16)&#34; ,&#34;rgb(222,0,0)&#34; ,&#34;rgb(22,36,92)&#34; ,&#34;rgb(127,24,116)&#34; ,&#34;rgb(119,195,79)&#34; ,&#34;rgb(4,77,34)&#34; ,&#34;rgb(122,2,60)&#34;]'></script>
         
 
         <!-- background effects end -->
@@ -1292,22 +1351,6 @@ Github源码：https://github.com/guanyang/spring-base-parent
     
         <script src="/js/ribbonDynamic.js"></script>
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
