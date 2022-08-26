@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://note.xcloudapi.com/2022/08/26/Java%E8%87%AA%E6%97%8B%E9%94%81%E3%80%81CLH%E9%94%81%E5%8F%8AMCS%E9%94%81%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/</loc>
+    <lastmod>2022-08-26</lastmod>
+  </url>
+  <url>
     <loc>https://note.xcloudapi.com/2022/08/03/Java%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</loc>
     <lastmod>2022-08-03</lastmod>
   </url>
