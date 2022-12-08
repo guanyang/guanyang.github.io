@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="3mPyxFQW3rz9gi2YKDC_Cm6UU-DmnlIomoZ1t7wf9nU" />
+    <meta name="baidu-site-verification" content="code-0t5uKGPlwz" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="我们生活在阴沟里，但有人依然仰望星空。">
+    <meta name="keyword"  content="技术, 人生">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          apisix入门指南 - 三叶草的星空
+        
+    </title>
+
+    <link rel="canonical" href="https://note.xcloudapi.com/2022/12/08/apisix入门指南/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/default.jpg')
+                /*post*/
+            
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#APISIX教程" title="APISIX教程">APISIX教程</a>
+                            
+                        </div>
+                        <h1>apisix入门指南</h1>
+                        <h2 class="subheading">本文将为你介绍 Apache APISIX 的概念、功能以及如何使用 APISIX。</h2>
+                        <span class="meta">
+                            Posted by guanyang on
+                            2022-12-08
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">1.8k</span> and
+                                Reading Time <span class="post-count">7</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">三叶草的星空</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/categories/">Categories</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/photography/">Photography</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://music.xcloudapi.com" target="_blank">Music Website</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="Apache-APISIX-是什么？"><a href="#Apache-APISIX-是什么？" class="headerlink" title="Apache APISIX 是什么？"></a>Apache APISIX 是什么？</h3><ul>
+<li><code>Apache APISIX</code>是 Apache 软件基金会下的云原生 API 网关，它兼具动态、实时、高性能等特点，提供了负载均衡、动态上游、灰度发布（金丝雀发布）、服务熔断、身份认证、可观测性等丰富的流量管理功能。</li>
+<li>我们可以使用<code>Apache APISIX</code>来处理传统的南北向流量，也可以处理服务间的东西向流量。同时，它也支持作为 <a href="https://github.com/apache/apisix-ingress-controller" target="_blank" rel="noopener">K8s Ingress Controller</a> 来使用。</li>
+</ul>
+<h3 id="主要特性"><a href="#主要特性" class="headerlink" title="主要特性"></a>主要特性</h3><ul>
+<li><strong>多平台支持</strong>：APISIX 提供了多平台解决方案，它不但支持裸机运行，也支持在 Kubernetes 中使用，还支持与 AWS Lambda、Azure Function、Lua 函数和 Apache OpenWhisk 等云服务集成。</li>
+<li><strong>多协议支持</strong>：支持TCP/UDP 代理、Dubbo 代理、动态 MQTT 代理、gRPC 代理、Websocket 代理、HTTP(S) 反向代理及动态加载 SSL 证书等多种协议。</li>
+<li><strong>全动态能力</strong>：APISIX 支持热加载，这意味着你不需要重启服务就可以更新 APISIX 的配置。请访问<a href="https://apisix.apache.org/zh/blog/2021/08/25/why-apache-apisix-chose-nginx-and-lua/" target="_blank" rel="noopener">为什么 Apache APISIX 选择 Nginx + Lua 这个技术栈？</a>以了解实现原理。</li>
+<li><strong>精细化路由</strong>：APISIX 支持使用 <a href="http://nginx.org/en/docs/varindex.html" target="_blank" rel="noopener">NGINX 内置变量</a>做为路由的匹配条件，你可以自定义匹配函数来过滤请求，匹配路由。</li>
+<li><strong>安全防护</strong>：丰富的认证、鉴权支持，支持外部的身份认证平台，比如 Auth0，Okta，Authing 等，内置策略，无需配置即可抵御 ReDoS。</li>
+<li><strong>运维友好</strong>：APISIX 支持与以下工具和平台集成，通过 APISIX Dashboard，运维人员可以通过友好且直观的 UI 配置 APISIX。<ul>
+<li><a href="https://apisix.apache.org/zh/docs/apisix/plugins/jwt-auth/#usage-with-hashicorp-vault" target="_blank" rel="noopener">HashiCorp Vault</a></li>
+<li><a href="https://apisix.apache.org/zh/docs/apisix/plugins/zipkin/" target="_blank" rel="noopener">Zipkin</a></li>
+<li><a href="https://apisix.apache.org/zh/docs/apisix/plugins/skywalking/" target="_blank" rel="noopener">Apache SkyWalking</a></li>
+<li><a href="https://apisix.apache.org/zh/docs/apisix/discovery/consul_kv/" target="_blank" rel="noopener">Consul</a></li>
+<li><a href="https://apisix.apache.org/zh/docs/apisix/discovery/nacos/" target="_blank" rel="noopener">Nacos</a></li>
+<li><a href="https://apisix.apache.org/zh/docs/apisix/discovery/" target="_blank" rel="noopener">Eureka</a></li>
+</ul>
+</li>
+<li><strong>高度可扩展</strong>：支持自定义插件，<a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/external-plugin.md" target="_blank" rel="noopener">插件可以用 Java/Go/Python 编写</a>，支持自定义负载均衡算法和自定义路由。</li>
+<li><strong>多语言插件支持</strong>：APISIX 支持多种开发语言进行插件开发，开发人员可以选择擅长语言的 SDK 开发自定义插件。</li>
+<li><strong>Serverless</strong>：<ul>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/plugins/serverless.md" target="_blank" rel="noopener">Lua functions</a>：能在 APISIX 每个阶段调用 lua 函数。</li>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/plugins/azure-functions.md" target="_blank" rel="noopener">Azure functions</a>：能无缝整合进 Azure Serverless Function 中。作为动态上游，能将特定的 URI 请求全部代理到微软 Azure 云中。</li>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/plugins/openwhisk.md" target="_blank" rel="noopener">Apache OpenWhisk</a>：与 Apache OpenWhisk 集成。作为动态上游，能将特定的 URI 请求代理到你自己的 OpenWhisk 集群。</li>
+</ul>
+</li>
+</ul>
+<h3 id="APISIX架构"><a href="#APISIX架构" class="headerlink" title="APISIX架构"></a>APISIX架构</h3><h4 id="总体架构"><a href="#总体架构" class="headerlink" title="总体架构"></a>总体架构</h4><p><img src="../../../../img/note/APISIX总体架构.png" alt="总体架构"></p>
+<h4 id="技术架构"><a href="#技术架构" class="headerlink" title="技术架构"></a>技术架构</h4><p><img src="../../../../img/note/APISIX技术架构.png" alt="技术架构"></p>
+<h4 id="部署架构"><a href="#部署架构" class="headerlink" title="部署架构"></a>部署架构</h4><ul>
+<li>下图中的三种形态都允许用户去部署：Admin、Gateway、Gateway+Admin。</li>
+<li>APISIX的解决方案首先是 All In One，即只有一个 “Gateway+Admin” 的包，当用户需要将 Gateway 和 Admin 分别部署时，只需修改配置，是否启用 Admin 就可以实现。</li>
+</ul>
+<p><img src="../../../../img/note/APISIX部署架构.png" alt="部署架构"></p>
+<h3 id="APISIX安装"><a href="#APISIX安装" class="headerlink" title="APISIX安装"></a>APISIX安装</h3><ul>
+<li><a href="https://apisix.apache.org/zh/docs/apisix/installation-guide/" target="_blank" rel="noopener">官方安装指南</a></li>
+</ul>
+<h3 id="APISIX对象"><a href="#APISIX对象" class="headerlink" title="APISIX对象"></a>APISIX对象</h3><h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><ul>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/terminology/route.md" target="_blank" rel="noopener">Route</a>：通过路由定义规则来匹配客户端请求，根据匹配结果加载并执行相应的插件，最后把请求转发给到指定的上游应用。</li>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/terminology/service.md" target="_blank" rel="noopener">Service</a>：是某类 API 的抽象（也可以理解为一组 Route 的抽象）。它通常与上游服务抽象是一一对应的，但与路由之间，通常是 1:N 即一对多的关系。</li>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/terminology/upstream.md" target="_blank" rel="noopener">Upstream</a>：是对虚拟主机抽象，即应用层服务或节点的抽象。你可以通过 Upstream 对象对多个服务节点按照配置规则进行负载均衡。</li>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/terminology/consumer.md" target="_blank" rel="noopener">Consumer</a>：是某类服务的消费者，需要与用户认证配合才可以使用。当不同的消费者请求同一个 API 时，APISIX 会根据当前请求的用户信息，对应不同的 Plugin 或 Upstream 配置。</li>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/terminology/global-rule.md" target="_blank" rel="noopener">Global Rule</a>：如果你需要一个能作用于所有请求的 Plugin，可以通过 Global Rules 启用一个全局的插件配置。</li>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/terminology/plugin.md" target="_blank" rel="noopener">Plugin</a>：表示将在 HTTP 请求/响应生命周期期间执行的插件配置。Plugin 的配置信息可以直接绑定在 Route 上，也可以被绑定在 Service、Consumer 或 Plugin Config 上。</li>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/terminology/plugin-config.md" target="_blank" rel="noopener">Plugin Config</a>：在很多情况下，我们在不同的路由中会使用相同的插件规则，此时就可以通过 Plugin Config 来设置这些规则。Plugin Config 属于一组通用插件配置的抽象。</li>
+</ul>
+<h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A(Service) --&gt;|1:N| B(Route)</span><br><span class="line">B --&gt;|1:1| C(Upstream)</span><br><span class="line">B --&gt;|1:N| D(Plugin)</span><br><span class="line">A --&gt;|1:1| C</span><br><span class="line">A --&gt;|1:N| D</span><br><span class="line">E(Consumer) --&gt; |1:N|D</span><br></pre></td></tr></table></figure>
+<h4 id="插件优先级"><a href="#插件优先级" class="headerlink" title="插件优先级"></a>插件优先级</h4><ul>
+<li>对于同一个插件的配置，只能有一个是有效的，其插件配置优先级为：Consumer &gt; Route &gt; Plugin Config &gt; Service</li>
+</ul>
+<h3 id="APISIX配置"><a href="#APISIX配置" class="headerlink" title="APISIX配置"></a>APISIX配置</h3><ul>
+<li><strong>静态配置</strong>：仅在程序启动时生效，若修改后需要重启<ul>
+<li>永远不要手工修改<code>conf/config-default.yaml</code>文件，该文件是与 APISIX 源码强绑定。如果需要自定义任何配置，都应在<code>config.yaml</code>文件中完成。</li>
+<li>当服务每次启动时，apisix 会根据<code>conf/config.yaml</code>配置和模板<a href="https://github.com/apache/apisix/blob/master/apisix/cli/ngx_tpl.lua" target="_blank" rel="noopener">apisix/cli/ngx_tpl.lua</a>自动生成新的<code>conf/nginx.conf</code>并自动启动服务。</li>
+</ul>
+</li>
+<li><strong>动态配置</strong>：可在程序执行过程中动态加载，修改配置后不需要重启，可以热加载，分为：”Stand-alone”管理模式和etcd配置中心管理模式<ul>
+<li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/stand-alone.md" target="_blank" rel="noopener">Stand-alone模式</a>：即本地存储方式：<code>conf/apisix.yaml</code></li>
+<li><a href="https://www.taohui.tech/2021/08/10/%E5%BC%80%E6%BA%90%E7%BD%91%E5%85%B3APISIX%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">etcd配置中心管理模式</a>：即路由配置通过Admin API持久化在etcd中</li>
+</ul>
+</li>
+</ul>
+<h3 id="插件扩展"><a href="#插件扩展" class="headerlink" title="插件扩展"></a>插件扩展</h3><h4 id="External-Plugin"><a href="#External-Plugin" class="headerlink" title="External Plugin"></a>External Plugin</h4><h5 id="配置自定义lua插件"><a href="#配置自定义lua插件" class="headerlink" title="配置自定义lua插件"></a>配置自定义lua插件</h5><ol>
+<li>将自定义lua插件放到<code>/usr/local/apisix/apisix/plugins</code>目录，插件开发参考<a href="https://apisix.apache.org/zh/docs/apisix/plugin-develop/" target="_blank" rel="noopener">apisix插件开发官方文档</a></li>
+<li>修改<code>/usr/local/apisix/conf/config.yaml</code>配置，在<code>plugins</code>节点下启用自定义lua插件，并重启apisix服务<code>service apisix restart</code></li>
+<li>导出apisix插件<code>schema</code>配置：<code>curl http://127.0.0.1:9090/v1/schema &gt; schema.json</code><blockquote>
+<p>如果导出命令报错，参考<a href="https://apisix.apache.org/docs/dashboard/FAQ/#4-after-modifying-the-plugin-schema-or-creating-a-custom-plugin-in-apache-apisix-why-cant-i-find-it-on-the-dashboard" target="_blank" rel="noopener">官方文档配置</a></p>
+</blockquote>
+</li>
+<li>将<code>schema.json</code>上传到<code>/usr/local/apisix-dashboard/conf</code>路径下，注意先备份原<code>schema.json</code>配置</li>
+<li>重启<code>apisix-dashboard</code></li>
+</ol>
+<h5 id="挂载开源热门lua插件"><a href="#挂载开源热门lua插件" class="headerlink" title="挂载开源热门lua插件"></a>挂载开源热门lua插件</h5><ol>
+<li>将现有lua插件放到<code>/usr/local/apisix/deps/share/lua/5.1</code>目录</li>
+<li>例如挂载<a href="https://github.com/cloudflare/lua-resty-cookie" target="_blank" rel="noopener">lua-resty-cookie</a>插件，自定义lua脚本引用如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local cookie &#x3D; require(&quot;resty.cookie&quot;)</span><br></pre></td></tr></table></figure></li>
+<li>如果挂载多个相同功能的lua插件，则按照以下路径优先配置的插件优先生效<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lua_package_path  &quot;$prefix&#x2F;deps&#x2F;share&#x2F;lua&#x2F;5.1&#x2F;?.lua;$prefix&#x2F;deps&#x2F;share&#x2F;lua&#x2F;5.1&#x2F;?&#x2F;init.lua;&#x2F;usr&#x2F;local&#x2F;apisix&#x2F;?.lua;&#x2F;usr&#x2F;local&#x2F;apisix&#x2F;?&#x2F;init.lua;;&#x2F;usr&#x2F;local&#x2F;apisix&#x2F;?.lua;.&#x2F;?.lua;&#x2F;usr&#x2F;local&#x2F;openresty&#x2F;luajit&#x2F;share&#x2F;luajit-2.1.0-beta3&#x2F;?.lua;&#x2F;usr&#x2F;local&#x2F;share&#x2F;lua&#x2F;5.1&#x2F;?.lua;&#x2F;usr&#x2F;local&#x2F;share&#x2F;lua&#x2F;5.1&#x2F;?&#x2F;init.lua;&#x2F;usr&#x2F;local&#x2F;openresty&#x2F;luajit&#x2F;share&#x2F;lua&#x2F;5.1&#x2F;?.lua;&#x2F;usr&#x2F;local&#x2F;openresty&#x2F;luajit&#x2F;share&#x2F;lua&#x2F;5.1&#x2F;?&#x2F;init.lua;;&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Plugin-Runner"><a href="#Plugin-Runner" class="headerlink" title="Plugin Runner"></a>Plugin Runner</h4><p><img src="../../../../img/note/APISIX-Plugin-Runner.png" alt="Plugin Runner"></p>
+<ul>
+<li>当你在 APISIX 中配置了一个 Plugin Runner ，APISIX 将以子进程的方式运行该 Plugin Runner 。</li>
+<li>该子进程与 APISIX 进程从属相同用户。当重启或者重新加载 APISIX 时，该 Plugin Runner 也将被重启。</li>
+<li>一旦你为指定路由配置了 ext-plugin-* 插件， 匹配该路由的请求将触发从 APISIX 到 Plugin Runner 的 RPC 调用。</li>
+<li>支持的 Plugin Runner<ul>
+<li>Java: <a href="https://github.com/apache/apisix-java-plugin-runner" target="_blank" rel="noopener">https://github.com/apache/apisix-java-plugin-runner</a></li>
+<li>Go: <a href="https://github.com/apache/apisix-go-plugin-runner" target="_blank" rel="noopener">https://github.com/apache/apisix-go-plugin-runner</a></li>
+<li>Python: <a href="https://github.com/apache/apisix-python-plugin-runner" target="_blank" rel="noopener">https://github.com/apache/apisix-python-plugin-runner</a></li>
+<li>JavaScript: <a href="https://github.com/zenozeng/apisix-javascript-plugin-runner" target="_blank" rel="noopener">https://github.com/zenozeng/apisix-javascript-plugin-runner</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li><a href="https://apisix.apache.org/zh/docs/apisix/getting-started/" target="_blank" rel="noopener">Apache APISIX官方文档</a></li>
+<li><a href="https://apisix.apache.org/zh/docs/dashboard/USER_GUIDE/" target="_blank" rel="noopener">Apache APISIX Dashboard官方文档</a></li>
+<li><a href="https://github.com/apache/apisix/tree/master/docs/zh/latest" target="_blank" rel="noopener">Apache APISIX Github文档</a></li>
+</ul>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/08/26/Java自旋锁、CLH锁及MCS锁原理及实现/" data-toggle="tooltip" data-placement="top" title="Java自旋锁、CLH锁及MCS锁原理及实现">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                
+<link rel="stylesheet" href="/css/music-player/fonts/iconfont.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/reset.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/player.css">
+
+
+<div class="music-player">
+    <audio class="music-player__audio" ></audio>
+    <div class="music-player__main">
+        <div class="music-player__blur"></div>
+        <div class="music-player__disc">
+            <div class="music-player__image">
+                <img width="100%" src="" alt="">
+            </div>
+            <div class="music-player__pointer"><img width="100%" src="/img/cd_tou.png" alt=""></div>
+        </div>
+        <div class="music-player__controls">
+            <div class="music__info">
+                <h3 class="music__info--title">...</h3>
+                <p class="music__info--singer">...</p>
+            </div>
+            <div class="player-control">
+                <div class="player-control__content">
+                    <div class="player-control__btns">
+                        <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+                        <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i></div>
+                        <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+                        <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i></div>
+                    </div>
+                    <div class="player-control__volume">
+                        <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+                        <div class="control__volume--progress player_progress"></div>
+                    </div>
+                </div>
+                <div class="player-control__content">
+                    <div class="player__song--progress player_progress"></div>
+                    <div class="player__song--timeProgess nowTime">00:00</div>
+                    <div class="player__song--timeProgess totalTime">00:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/music-player/utill.js"></script>
+
+
+<script src="/js/music-player/jquery.min.js"></script>
+
+<!-- netease; qqkg -->
+<!--
+<script src="/js/music-player/player.js?library=config.music.library.js"></script>
+-->
+<script src="../../../../js/music-player/player.js?library=netease&music=https://kg.qq.com/node/play?s=7deFpz7Z26Jmv7di&g_f=share_html"></script>
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Apache-APISIX-是什么？"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Apache APISIX 是什么？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#主要特性"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">主要特性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#APISIX架构"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">APISIX架构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#总体架构"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">总体架构</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#技术架构"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">技术架构</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#部署架构"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">部署架构</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#APISIX安装"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">APISIX安装</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#APISIX对象"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">APISIX对象</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#对象"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">对象</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据模型"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">数据模型</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#插件优先级"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">插件优先级</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#APISIX配置"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">APISIX配置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#插件扩展"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">插件扩展</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#External-Plugin"><span class="toc-nav-number">7.1.</span> <span class="toc-nav-text">External Plugin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#配置自定义lua插件"><span class="toc-nav-number">7.1.1.</span> <span class="toc-nav-text">配置自定义lua插件</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#挂载开源热门lua插件"><span class="toc-nav-number">7.1.2.</span> <span class="toc-nav-text">挂载开源热门lua插件</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Plugin-Runner"><span class="toc-nav-number">7.2.</span> <span class="toc-nav-text">Plugin Runner</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#参考文档"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">参考文档</span></a></li></ol>
+            
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#APISIX教程" title="APISIX教程">APISIX教程</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://music.xcloudapi.com" target="_blank">guanyang&#39;s MusicWebsite</a></li>
+                    
+                        <li><a href="https://www.xcloudapi.com" target="_blank">guanyang&#39;s Web</a></li>
+                    
+                        <li><a href="https://github.com/guanyang" target="_blank">guanyang&#39;s Github</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/guanyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/cnyangguan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/cnyangguan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; guanyang 2022 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/guanyang/guanyang.github.io" target="_blank" rel="noopener">
+                        <i>guanyang</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=guanyang&repo=guanyang.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://note.xcloudapi.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;🌱&quot;,&quot;just do it&quot;,&quot;🌾&quot;,&quot;🍀&quot;,&quot;don&#39;t give up&quot;,&quot;🍂&quot;,&quot;🌻&quot;,&quot;try it again&quot;,&quot;🍃&quot;,&quot;never say die&quot;,&quot;🌵&quot;,&quot;🌿&quot;,&quot;🌴&quot;]' color='[&quot;rgb(121,93,179)&quot; ,&quot;rgb(76,180,231)&quot; ,&quot;rgb(184,90,154)&quot; ,&quot;rgb(157,211,250)&quot; ,&quot;rgb(255,0,0)&quot; ,&quot;rgb(242,153,29)&quot; ,&quot;rgb(23,204,16)&quot; ,&quot;rgb(222,0,0)&quot; ,&quot;rgb(22,36,92)&quot; ,&quot;rgb(127,24,116)&quot; ,&quot;rgb(119,195,79)&quot; ,&quot;rgb(4,77,34)&quot; ,&quot;rgb(122,2,60)&quot;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>
