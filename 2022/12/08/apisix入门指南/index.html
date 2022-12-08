@@ -317,7 +317,7 @@
 <li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/terminology/plugin.md" target="_blank" rel="noopener">Plugin</a>：表示将在 HTTP 请求/响应生命周期期间执行的插件配置。Plugin 的配置信息可以直接绑定在 Route 上，也可以被绑定在 Service、Consumer 或 Plugin Config 上。</li>
 <li><a href="https://github.com/apache/apisix/blob/master/docs/zh/latest/terminology/plugin-config.md" target="_blank" rel="noopener">Plugin Config</a>：在很多情况下，我们在不同的路由中会使用相同的插件规则，此时就可以通过 Plugin Config 来设置这些规则。Plugin Config 属于一组通用插件配置的抽象。</li>
 </ul>
-<h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A(Service) --&gt;|1:N| B(Route)</span><br><span class="line">B --&gt;|1:1| C(Upstream)</span><br><span class="line">B --&gt;|1:N| D(Plugin)</span><br><span class="line">A --&gt;|1:1| C</span><br><span class="line">A --&gt;|1:N| D</span><br><span class="line">E(Consumer) --&gt; |1:N|D</span><br></pre></td></tr></table></figure>
+<h4 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h4><p><img src="../../../../img/note/apisix数据模型.png" alt="数据模型"></p>
 <h4 id="插件优先级"><a href="#插件优先级" class="headerlink" title="插件优先级"></a>插件优先级</h4><ul>
 <li>对于同一个插件的配置，只能有一个是有效的，其插件配置优先级为：Consumer &gt; Route &gt; Plugin Config &gt; Service</li>
 </ul>
