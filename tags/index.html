@@ -160,6 +160,13 @@
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -168,13 +175,6 @@
                         
                         <li>
                             <a href="/categories/">Categories</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -243,11 +243,11 @@
             <!-- 标签云 -->
             <div id='tag_clouds' class="tags">
                 
+                    <a href="#easy-mock" title="easy-mock" rel="1">easy-mock</a>
+                
                     <a href="#Caffeine" title="Caffeine" rel="1">Caffeine</a>
                 
                     <a href="#缓存" title="缓存" rel="1">缓存</a>
-                
-                    <a href="#easy-mock" title="easy-mock" rel="1">easy-mock</a>
                 
                     <a href="#mysql" title="mysql" rel="1">mysql</a>
                 
@@ -261,6 +261,8 @@
                 
                     <a href="#IDEA" title="IDEA" rel="1">IDEA</a>
                 
+                    <a href="#Alpine" title="Alpine" rel="1">Alpine</a>
+                
                     <a href="#maven" title="maven" rel="7">maven</a>
                 
                     <a href="#archetype" title="archetype" rel="2">archetype</a>
@@ -273,13 +275,21 @@
                 
                     <a href="#分布式缓存" title="分布式缓存" rel="1">分布式缓存</a>
                 
-                    <a href="#架构" title="架构" rel="1">架构</a>
+                    <a href="#启动器" title="启动器" rel="6">启动器</a>
+                
+                    <a href="#dockerfile" title="dockerfile" rel="6">dockerfile</a>
+                
+                    <a href="#plugin" title="plugin" rel="6">plugin</a>
+                
+                    <a href="#shell" title="shell" rel="6">shell</a>
+                
+                    <a href="#javaagent" title="javaagent" rel="6">javaagent</a>
                 
                     <a href="#SpringBoot" title="SpringBoot" rel="16">SpringBoot</a>
                 
-                    <a href="#Spring" title="Spring" rel="10">Spring</a>
+                    <a href="#架构" title="架构" rel="1">架构</a>
                 
-                    <a href="#csrf" title="csrf" rel="1">csrf</a>
+                    <a href="#Spring" title="Spring" rel="10">Spring</a>
                 
                     <a href="#Exception" title="Exception" rel="1">Exception</a>
                 
@@ -293,10 +303,6 @@
                 
                     <a href="#log" title="log" rel="1">log</a>
                 
-                    <a href="#签名" title="签名" rel="1">签名</a>
-                
-                    <a href="#验签" title="验签" rel="1">验签</a>
-                
                     <a href="#file" title="file" rel="1">file</a>
                 
                     <a href="#http" title="http" rel="1">http</a>
@@ -305,23 +311,17 @@
                 
                     <a href="#regex" title="regex" rel="1">regex</a>
                 
+                    <a href="#签名" title="签名" rel="1">签名</a>
+                
+                    <a href="#验签" title="验签" rel="1">验签</a>
+                
                     <a href="#xss" title="xss" rel="1">xss</a>
                 
-                    <a href="#启动器" title="启动器" rel="6">启动器</a>
-                
-                    <a href="#dockerfile" title="dockerfile" rel="6">dockerfile</a>
-                
-                    <a href="#plugin" title="plugin" rel="6">plugin</a>
-                
-                    <a href="#shell" title="shell" rel="6">shell</a>
-                
-                    <a href="#javaagent" title="javaagent" rel="6">javaagent</a>
-                
-                    <a href="#Alpine" title="Alpine" rel="1">Alpine</a>
-                
-                    <a href="#network" title="network" rel="1">network</a>
+                    <a href="#csrf" title="csrf" rel="1">csrf</a>
                 
                     <a href="#Shell" title="Shell" rel="1">Shell</a>
+                
+                    <a href="#network" title="network" rel="1">network</a>
                 
                     <a href="#高性能" title="高性能" rel="1">高性能</a>
                 
@@ -329,17 +329,19 @@
                 
                     <a href="#队列" title="队列" rel="1">队列</a>
                 
-                    <a href="#多线程" title="多线程" rel="4">多线程</a>
-                
                     <a href="#高并发" title="高并发" rel="3">高并发</a>
                 
                     <a href="#并发容器" title="并发容器" rel="1">并发容器</a>
+                
+                    <a href="#多线程" title="多线程" rel="4">多线程</a>
                 
                     <a href="#同步容器" title="同步容器" rel="1">同步容器</a>
                 
                     <a href="#自旋锁" title="自旋锁" rel="1">自旋锁</a>
                 
-                    <a href="#APISIX教程" title="APISIX教程" rel="1">APISIX教程</a>
+                    <a href="#属性拷贝" title="属性拷贝" rel="1">属性拷贝</a>
+                
+                    <a href="#BeanCopy" title="BeanCopy" rel="1">BeanCopy</a>
                 
                     <a href="#ssl证书" title="ssl证书" rel="1">ssl证书</a>
                 
@@ -347,10 +349,38 @@
                 
                     <a href="#免费证书" title="免费证书" rel="1">免费证书</a>
                 
+                    <a href="#APISIX教程" title="APISIX教程" rel="1">APISIX教程</a>
+                
             </div>
 
             <!-- 标签列表 -->
 
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="easy-mock">
+                    <span class="tag-text">easy-mock</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2021/07/20/easy-mock服务器部署/">
+                        <h2 class="post-title">
+                            easy-mock服务器部署
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                基于linux，实现easy-mock服务器部署
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
             
             <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Caffeine">
@@ -395,32 +425,6 @@
                         
                             <h3 class="post-subtitle">
                                 介绍Caffeine缓存机制，以及与GuavaCache的差异
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="easy-mock">
-                    <span class="tag-text">easy-mock</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2021/07/20/easy-mock服务器部署/">
-                        <h2 class="post-title">
-                            easy-mock服务器部署
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                基于linux，实现easy-mock服务器部署
                             </h3>
                         
                     </a>
@@ -504,13 +508,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
                         <h2 class="post-title">
-                            Launcher通用启动器-Maven插件配置
+                            Launcher通用启动器-使用说明
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
+                                启动器脚本及参数使用说明
                             </h3>
                         
                     </a>
@@ -523,13 +527,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
                         <h2 class="post-title">
-                            Launcher通用启动器-使用说明
+                            Launcher通用启动器-Maven插件配置
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                启动器脚本及参数使用说明
+                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
                             </h3>
                         
                     </a>
@@ -561,13 +565,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器/">
+                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
                         <h2 class="post-title">
-                            Launcher通用启动器
+                            Launcher通用启动器-测试用例
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
+                                启动器常见测试用例介绍
                             </h3>
                         
                     </a>
@@ -580,13 +584,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
+                     <a href="/2022/06/08/Launcher通用启动器/">
                         <h2 class="post-title">
-                            Launcher通用启动器-测试用例
+                            Launcher通用启动器
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                启动器常见测试用例介绍
+                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
                             </h3>
                         
                     </a>
@@ -701,6 +705,32 @@
             </div>
             
             <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Alpine">
+                    <span class="tag-text">Alpine</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Alpine-Linux教程/">
+                        <h2 class="post-title">
+                            Alpine Linux教程
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Alpine Linux是一个由社区开发的Linux操作系统，该操作系统以安全为理念，面向x86路由器、防火墙、虚拟专用网、IP电话盒及服务器而设计
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="maven">
                     <span class="tag-text">maven</span>
                 </span>
@@ -748,13 +778,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
                         <h2 class="post-title">
-                            Launcher通用启动器-Maven插件配置
+                            Launcher通用启动器-使用说明
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
+                                启动器脚本及参数使用说明
                             </h3>
                         
                     </a>
@@ -767,13 +797,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
                         <h2 class="post-title">
-                            Launcher通用启动器-使用说明
+                            Launcher通用启动器-Maven插件配置
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                启动器脚本及参数使用说明
+                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
                             </h3>
                         
                     </a>
@@ -805,13 +835,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器/">
+                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
                         <h2 class="post-title">
-                            Launcher通用启动器
+                            Launcher通用启动器-测试用例
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
+                                启动器常见测试用例介绍
                             </h3>
                         
                     </a>
@@ -824,13 +854,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
+                     <a href="/2022/06/08/Launcher通用启动器/">
                         <h2 class="post-title">
-                            Launcher通用启动器-测试用例
+                            Launcher通用启动器
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                启动器常见测试用例介绍
+                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
                             </h3>
                         
                     </a>
@@ -990,8 +1020,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="架构">
-                    <span class="tag-text">架构</span>
+                <span class="fa fa-tag listing-seperator" id="启动器">
+                    <span class="tag-text">启动器</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -999,13 +1029,592 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Java工程架构定义/">
+                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
                         <h2 class="post-title">
-                            Java工程架构定义
+                            Launcher通用启动器-Dockerfile扩展支持
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                规范Java工程技术架构定义，降低架构初始化及常用组件的接入成本，提升研发效率
+                                提供了Dockerfile生成功能，支持定制化基础运行环境
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-使用说明
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器脚本及参数使用说明
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Maven插件配置
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-日志配置指南
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-测试用例
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器常见测试用例介绍
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器/">
+                        <h2 class="post-title">
+                            Launcher通用启动器
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="dockerfile">
+                    <span class="tag-text">dockerfile</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Dockerfile扩展支持
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                提供了Dockerfile生成功能，支持定制化基础运行环境
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-使用说明
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器脚本及参数使用说明
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Maven插件配置
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-日志配置指南
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-测试用例
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器常见测试用例介绍
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器/">
+                        <h2 class="post-title">
+                            Launcher通用启动器
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="plugin">
+                    <span class="tag-text">plugin</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Dockerfile扩展支持
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                提供了Dockerfile生成功能，支持定制化基础运行环境
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-使用说明
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器脚本及参数使用说明
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Maven插件配置
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-日志配置指南
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-测试用例
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器常见测试用例介绍
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器/">
+                        <h2 class="post-title">
+                            Launcher通用启动器
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="shell">
+                    <span class="tag-text">shell</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Dockerfile扩展支持
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                提供了Dockerfile生成功能，支持定制化基础运行环境
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-使用说明
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器脚本及参数使用说明
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Maven插件配置
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-日志配置指南
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-测试用例
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器常见测试用例介绍
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器/">
+                        <h2 class="post-title">
+                            Launcher通用启动器
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="javaagent">
+                    <span class="tag-text">javaagent</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Dockerfile扩展支持
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                提供了Dockerfile生成功能，支持定制化基础运行环境
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-使用说明
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器脚本及参数使用说明
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Maven插件配置
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-日志配置指南
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-测试用例
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器常见测试用例介绍
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器/">
+                        <h2 class="post-title">
+                            Launcher通用启动器
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
                             </h3>
                         
                     </a>
@@ -1025,6 +1634,63 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Dockerfile扩展支持
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                提供了Dockerfile生成功能，支持定制化基础运行环境
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-使用说明
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器脚本及参数使用说明
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-Maven插件配置
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
                      <a href="/2022/06/08/Java工程架构定义/">
                         <h2 class="post-title">
                             Java工程架构定义
@@ -1044,13 +1710,51 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Spring工具包-csrf/">
+                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
                         <h2 class="post-title">
-                            Spring工具包-csrf
+                            Launcher通用启动器-日志配置指南
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                Spring工具包安全组件，支持csrf防护
+                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
+                        <h2 class="post-title">
+                            Launcher通用启动器-测试用例
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                启动器常见测试用例介绍
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Launcher通用启动器/">
+                        <h2 class="post-title">
+                            Launcher通用启动器
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
                             </h3>
                         
                     </a>
@@ -1139,13 +1843,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Spring工具包-sign/">
+                     <a href="/2022/06/08/Spring工具包-util/">
                         <h2 class="post-title">
-                            Spring工具包-sign
+                            Spring工具包-util
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                Spring工具包签名组件，基于注解实现方法参数签名
+                                Spring工具包常用工具类合集
                             </h3>
                         
                     </a>
@@ -1158,13 +1862,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Spring工具包-util/">
+                     <a href="/2022/06/08/Spring工具包-sign/">
                         <h2 class="post-title">
-                            Spring工具包-util
+                            Spring工具包-sign
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                Spring工具包常用工具类合集
+                                Spring工具包签名组件，基于注解实现方法参数签名
                             </h3>
                         
                     </a>
@@ -1196,6 +1900,25 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
+                     <a href="/2022/06/08/Spring工具包-csrf/">
+                        <h2 class="post-title">
+                            Spring工具包-csrf
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Spring工具包安全组件，支持csrf防护
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
                      <a href="/2022/06/08/Spring工具包概述/">
                         <h2 class="post-title">
                             Spring工具包概述
@@ -1210,113 +1933,25 @@
                 </div>
                 <hr>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Dockerfile扩展支持
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                提供了Dockerfile生成功能，支持定制化基础运行环境
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="架构">
+                    <span class="tag-text">架构</span>
+                </span>
                 
                   <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
+                     <a href="/2022/06/08/Java工程架构定义/">
                         <h2 class="post-title">
-                            Launcher通用启动器-Maven插件配置
+                            Java工程架构定义
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-使用说明
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器脚本及参数使用说明
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-日志配置指南
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器/">
-                        <h2 class="post-title">
-                            Launcher通用启动器
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-测试用例
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器常见测试用例介绍
+                                规范Java工程技术架构定义，降低架构初始化及常用组件的接入成本，提升研发效率
                             </h3>
                         
                     </a>
@@ -1355,25 +1990,6 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Spring工具包-csrf/">
-                        <h2 class="post-title">
-                            Spring工具包-csrf
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Spring工具包安全组件，支持csrf防护
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
                      <a href="/2022/06/08/Spring工具包-core/">
                         <h2 class="post-title">
                             Spring工具包-core
@@ -1450,13 +2066,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Spring工具包-sign/">
+                     <a href="/2022/06/08/Spring工具包-util/">
                         <h2 class="post-title">
-                            Spring工具包-sign
+                            Spring工具包-util
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                Spring工具包签名组件，基于注解实现方法参数签名
+                                Spring工具包常用工具类合集
                             </h3>
                         
                     </a>
@@ -1469,13 +2085,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Spring工具包-util/">
+                     <a href="/2022/06/08/Spring工具包-sign/">
                         <h2 class="post-title">
-                            Spring工具包-util
+                            Spring工具包-sign
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                Spring工具包常用工具类合集
+                                Spring工具包签名组件，基于注解实现方法参数签名
                             </h3>
                         
                     </a>
@@ -1507,32 +2123,6 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Spring工具包概述/">
-                        <h2 class="post-title">
-                            Spring工具包概述
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                制定Java工程基础工具包规范，避免重复造轮子，提升效率，统一的父pom、三方依赖库及版本管理
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="csrf">
-                    <span class="tag-text">csrf</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
                      <a href="/2022/06/08/Spring工具包-csrf/">
                         <h2 class="post-title">
                             Spring工具包-csrf
@@ -1540,6 +2130,25 @@
                         
                             <h3 class="post-subtitle">
                                 Spring工具包安全组件，支持csrf防护
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Spring工具包概述/">
+                        <h2 class="post-title">
+                            Spring工具包概述
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                制定Java工程基础工具包规范，避免重复造轮子，提升效率，统一的父pom、三方依赖库及版本管理
                             </h3>
                         
                     </a>
@@ -1706,58 +2315,6 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="签名">
-                    <span class="tag-text">签名</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Spring工具包-sign/">
-                        <h2 class="post-title">
-                            Spring工具包-sign
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Spring工具包签名组件，基于注解实现方法参数签名
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="验签">
-                    <span class="tag-text">验签</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Spring工具包-sign/">
-                        <h2 class="post-title">
-                            Spring工具包-sign
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Spring工具包签名组件，基于注解实现方法参数签名
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="file">
                     <span class="tag-text">file</span>
                 </span>
@@ -1862,6 +2419,58 @@
             </div>
             
             <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="签名">
+                    <span class="tag-text">签名</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Spring工具包-sign/">
+                        <h2 class="post-title">
+                            Spring工具包-sign
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Spring工具包签名组件，基于注解实现方法参数签名
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="验签">
+                    <span class="tag-text">验签</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/Spring工具包-sign/">
+                        <h2 class="post-title">
+                            Spring工具包-sign
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Spring工具包签名组件，基于注解实现方法参数签名
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="xss">
                     <span class="tag-text">xss</span>
                 </span>
@@ -1888,8 +2497,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="启动器">
-                    <span class="tag-text">启动器</span>
+                <span class="fa fa-tag listing-seperator" id="csrf">
+                    <span class="tag-text">csrf</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -1897,644 +2506,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
+                     <a href="/2022/06/08/Spring工具包-csrf/">
                         <h2 class="post-title">
-                            Launcher通用启动器-Dockerfile扩展支持
+                            Spring工具包-csrf
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                提供了Dockerfile生成功能，支持定制化基础运行环境
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Maven插件配置
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-使用说明
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器脚本及参数使用说明
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-日志配置指南
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器/">
-                        <h2 class="post-title">
-                            Launcher通用启动器
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-测试用例
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器常见测试用例介绍
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="dockerfile">
-                    <span class="tag-text">dockerfile</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Dockerfile扩展支持
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                提供了Dockerfile生成功能，支持定制化基础运行环境
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Maven插件配置
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-使用说明
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器脚本及参数使用说明
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-日志配置指南
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器/">
-                        <h2 class="post-title">
-                            Launcher通用启动器
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-测试用例
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器常见测试用例介绍
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="plugin">
-                    <span class="tag-text">plugin</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Dockerfile扩展支持
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                提供了Dockerfile生成功能，支持定制化基础运行环境
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Maven插件配置
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-使用说明
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器脚本及参数使用说明
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-日志配置指南
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器/">
-                        <h2 class="post-title">
-                            Launcher通用启动器
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-测试用例
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器常见测试用例介绍
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="shell">
-                    <span class="tag-text">shell</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Dockerfile扩展支持
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                提供了Dockerfile生成功能，支持定制化基础运行环境
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Maven插件配置
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-使用说明
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器脚本及参数使用说明
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-日志配置指南
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器/">
-                        <h2 class="post-title">
-                            Launcher通用启动器
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-测试用例
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器常见测试用例介绍
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="javaagent">
-                    <span class="tag-text">javaagent</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Dockerfile扩展支持/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Dockerfile扩展支持
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                提供了Dockerfile生成功能，支持定制化基础运行环境
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-Maven插件配置/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-Maven插件配置
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器基于maven插件在构建阶段提供了丰富的选项帮助用户实现各类打包需求
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-使用说明/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-使用说明
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器脚本及参数使用说明
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-日志配置指南/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-日志配置指南
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher统一了应用的日志路径以及日志格式，并且提供了零配置开箱即用的特性
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器/">
-                        <h2 class="post-title">
-                            Launcher通用启动器
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                launcher是一个Java应用通用启动器，它不仅规范了应用的打包结构并且提供了众多可选的启动参数
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Launcher通用启动器-测试用例/">
-                        <h2 class="post-title">
-                            Launcher通用启动器-测试用例
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                启动器常见测试用例介绍
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Alpine">
-                    <span class="tag-text">Alpine</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/Alpine-Linux教程/">
-                        <h2 class="post-title">
-                            Alpine Linux教程
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Alpine Linux是一个由社区开发的Linux操作系统，该操作系统以安全为理念，面向x86路由器、防火墙、虚拟专用网、IP电话盒及服务器而设计
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="network">
-                    <span class="tag-text">network</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/06/08/docker网络基础/">
-                        <h2 class="post-title">
-                            docker网络基础
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                介绍docker网络模式及使用场景
+                                Spring工具包安全组件，支持csrf防护
                             </h3>
                         
                     </a>
@@ -2561,6 +2539,32 @@
                         
                             <h3 class="post-subtitle">
                                 介绍Shell脚本常用参数使用说明
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="network">
+                    <span class="tag-text">network</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/06/08/docker网络基础/">
+                        <h2 class="post-title">
+                            docker网络基础
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                介绍docker网络模式及使用场景
                             </h3>
                         
                     </a>
@@ -2649,89 +2653,6 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="多线程">
-                    <span class="tag-text">多线程</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/08/03/LockSupport实战/">
-                        <h2 class="post-title">
-                            LockSupport实战
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                LockSupport类可以阻塞当前线程以及唤醒指定被阻塞的线程
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/08/03/AQS原理及实战/">
-                        <h2 class="post-title">
-                            AQS原理及实战
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                AQS是一种提供了原子式管理同步状态、阻塞和唤醒线程功能以及CLH队列模型的简单框架。
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/08/03/Java并发容器及使用场景/">
-                        <h2 class="post-title">
-                            Java并发容器及使用场景
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                针对多线程并发设计，使用了锁分段技术，只对操作的位置进行同步操作，减小锁的粒度，从而提高吞吐量。
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2022/08/26/Java自旋锁、CLH锁及MCS锁原理及实现/">
-                        <h2 class="post-title">
-                            Java自旋锁、CLH锁及MCS锁原理及实现
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                自旋锁是指当一个线程尝试获取某个锁时，如果该锁已被其他线程占用，就一直循环检测锁是否被释放，而不是进入线程挂起或睡眠状态。
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="高并发">
                     <span class="tag-text">高并发</span>
                 </span>
@@ -2741,13 +2662,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/08/03/AQS原理及实战/">
+                     <a href="/2022/08/03/Java并发容器及使用场景/">
                         <h2 class="post-title">
-                            AQS原理及实战
+                            Java并发容器及使用场景
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                AQS是一种提供了原子式管理同步状态、阻塞和唤醒线程功能以及CLH队列模型的简单框架。
+                                针对多线程并发设计，使用了锁分段技术，只对操作的位置进行同步操作，减小锁的粒度，从而提高吞吐量。
                             </h3>
                         
                     </a>
@@ -2760,13 +2681,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/08/03/Java并发容器及使用场景/">
+                     <a href="/2022/08/03/AQS原理及实战/">
                         <h2 class="post-title">
-                            Java并发容器及使用场景
+                            AQS原理及实战
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                针对多线程并发设计，使用了锁分段技术，只对操作的位置进行同步操作，减小锁的粒度，从而提高吞吐量。
+                                AQS是一种提供了原子式管理同步状态、阻塞和唤醒线程功能以及CLH队列模型的简单框架。
                             </h3>
                         
                     </a>
@@ -2812,6 +2733,89 @@
                         
                             <h3 class="post-subtitle">
                                 针对多线程并发设计，使用了锁分段技术，只对操作的位置进行同步操作，减小锁的粒度，从而提高吞吐量。
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="多线程">
+                    <span class="tag-text">多线程</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/08/03/Java并发容器及使用场景/">
+                        <h2 class="post-title">
+                            Java并发容器及使用场景
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                针对多线程并发设计，使用了锁分段技术，只对操作的位置进行同步操作，减小锁的粒度，从而提高吞吐量。
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/08/03/LockSupport实战/">
+                        <h2 class="post-title">
+                            LockSupport实战
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                LockSupport类可以阻塞当前线程以及唤醒指定被阻塞的线程
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/08/03/AQS原理及实战/">
+                        <h2 class="post-title">
+                            AQS原理及实战
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                AQS是一种提供了原子式管理同步状态、阻塞和唤醒线程功能以及CLH队列模型的简单框架。
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/08/26/Java自旋锁、CLH锁及MCS锁原理及实现/">
+                        <h2 class="post-title">
+                            Java自旋锁、CLH锁及MCS锁原理及实现
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                自旋锁是指当一个线程尝试获取某个锁时，如果该锁已被其他线程占用，就一直循环检测锁是否被释放，而不是进入线程挂起或睡眠状态。
                             </h3>
                         
                     </a>
@@ -2874,8 +2878,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="APISIX教程">
-                    <span class="tag-text">APISIX教程</span>
+                <span class="fa fa-tag listing-seperator" id="属性拷贝">
+                    <span class="tag-text">属性拷贝</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -2883,13 +2887,39 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2022/12/08/apisix入门指南/">
+                     <a href="/2023/05/12/Bean属性拷贝性能分析/">
                         <h2 class="post-title">
-                            apisix入门指南
+                            Bean属性拷贝性能分析
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                本文将为你介绍 Apache APISIX 的概念、功能以及如何使用 APISIX。
+                                在 Java 系统工程开发过程中，都会有各个层之间的对象转换，比如 VO、DTO、PO、VO等，如果都是手动get、set又太浪费时间，还可能操作错误，所以选择一个转换工具会更加方便。
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="BeanCopy">
+                    <span class="tag-text">BeanCopy</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2023/05/12/Bean属性拷贝性能分析/">
+                        <h2 class="post-title">
+                            Bean属性拷贝性能分析
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                在 Java 系统工程开发过程中，都会有各个层之间的对象转换，比如 VO、DTO、PO、VO等，如果都是手动get、set又太浪费时间，还可能操作错误，所以选择一个转换工具会更加方便。
                             </h3>
                         
                     </a>
@@ -2968,6 +2998,32 @@
                         
                             <h3 class="post-subtitle">
                                 本文重点介绍怎么使用certbot申请免费的泛域名证书，并实现自动续期，从而达到永久免费。
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="APISIX教程">
+                    <span class="tag-text">APISIX教程</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2022/12/08/apisix入门指南/">
+                        <h2 class="post-title">
+                            apisix入门指南
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                本文将为你介绍 Apache APISIX 的概念、功能以及如何使用 APISIX。
                             </h3>
                         
                     </a>
@@ -3184,8 +3240,7 @@
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
