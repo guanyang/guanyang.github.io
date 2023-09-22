@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://note.xcloudapi.com</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2023/09/22/Spring-Native-Quarkus%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90/</loc>
+        <lastmod>2023-09-22T08:35:08.401Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2023/05/12/Bean%E5%B1%9E%E6%80%A7%E6%8B%B7%E8%B4%9D%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</loc>
+        <lastmod>2023-05-12T09:13:58.735Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2023/03/11/certbot%E7%94%B3%E8%AF%B7%E6%B3%9B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6/</loc>
+        <lastmod>2023-03-11T10:11:51.280Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/12/08/apisix%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</loc>
+        <lastmod>2022-12-08T08:06:17.490Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/08/26/Java%E8%87%AA%E6%97%8B%E9%94%81%E3%80%81CLH%E9%94%81%E5%8F%8AMCS%E9%94%81%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/</loc>
+        <lastmod>2022-08-26T05:55:46.761Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/08/03/Java%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</loc>
+        <lastmod>2022-08-03T09:40:47.797Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/08/03/AQS%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E6%88%98/</loc>
+        <lastmod>2022-08-03T09:37:54.754Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/08/03/LockSupport%E5%AE%9E%E6%88%98/</loc>
+        <lastmod>2022-08-03T09:28:51.598Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/20/%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97-Disruptor/</loc>
+        <lastmod>2022-06-20T06:24:13.254Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/docker%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</loc>
+        <lastmod>2022-06-08T08:47:38.654Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/shell%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E/</loc>
+        <lastmod>2022-06-08T08:42:29.113Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Alpine-Linux%E6%95%99%E7%A8%8B/</loc>
+        <lastmod>2022-06-08T08:39:47.743Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8/</loc>
+        <lastmod>2022-06-08T08:28:42.786Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-Dockerfile%E6%89%A9%E5%B1%95%E6%94%AF%E6%8C%81/</loc>
+        <lastmod>2022-06-08T08:10:52.133Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</loc>
+        <lastmod>2022-06-08T08:06:27.319Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</loc>
+        <lastmod>2022-06-08T08:02:50.959Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-Maven%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/</loc>
+        <lastmod>2022-06-08T07:53:49.224Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Launcher%E9%80%9A%E7%94%A8%E5%90%AF%E5%8A%A8%E5%99%A8-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</loc>
+        <lastmod>2022-06-08T07:49:14.528Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Java%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84%E5%AE%9A%E4%B9%89/</loc>
+        <lastmod>2022-06-08T06:03:21.420Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85%E6%A6%82%E8%BF%B0/</loc>
+        <lastmod>2022-06-08T03:53:22.011Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-xss/</loc>
+        <lastmod>2022-06-08T03:39:59.936Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-util/</loc>
+        <lastmod>2022-06-08T03:37:07.267Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-sign/</loc>
+        <lastmod>2022-06-08T03:25:13.264Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-log/</loc>
+        <lastmod>2022-06-08T03:22:10.076Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-lock/</loc>
+        <lastmod>2022-06-08T03:19:32.061Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-csrf/</loc>
+        <lastmod>2022-06-08T03:12:36.387Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-limit/</loc>
+        <lastmod>2022-06-08T03:12:36.382Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/06/08/Spring%E5%B7%A5%E5%85%B7%E5%8C%85-core/</loc>
+        <lastmod>2022-06-08T02:57:06.180Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/01/21/Apache-Geode%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+        <lastmod>2022-01-21T12:07:08.314Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2022/01/02/%E7%94%A8Serverless%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E7%9B%B8%E5%86%8C%E7%BD%91%E7%AB%99/</loc>
+        <lastmod>2022-01-02T13:26:08.003Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2021/11/22/Maven-Archetype%E6%90%AD%E5%BB%BA%E6%A8%A1%E6%9D%BF%E5%B7%A5%E7%A8%8B/</loc>
+        <lastmod>2021-11-22T10:02:40.046Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2021/11/12/IDEA-EmmyLua-Lua%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+        <lastmod>2021-11-12T11:50:41.984Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2021/07/21/Mac%E7%8E%AF%E5%A2%83RocketMQ%E5%AE%89%E8%A3%85/</loc>
+        <lastmod>2021-08-21T08:27:25.468Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2021/07/22/ngrok%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
+        <lastmod>2021-07-22T06:39:48.320Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2021/07/20/Caffeine%E7%BC%93%E5%AD%98/</loc>
+        <lastmod>2021-07-20T11:31:47.731Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2021/07/20/easy-mock%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/</loc>
+        <lastmod>2021-07-20T11:20:59.413Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://note.xcloudapi.com/2021/07/20/%E5%9F%BA%E4%BA%8Edocker%E9%85%8D%E7%BD%AEmysql%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</loc>
+        <lastmod>2021-07-20T11:20:53.221Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->
